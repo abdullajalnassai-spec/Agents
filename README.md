@@ -367,6 +367,11 @@ The unique specialists who don't fit in a box.
 |-------|-----------|-------------|
 | 🎭 [Agents Orchestrator](specialized/agents-orchestrator.md) | Multi-agent coordination, workflow management | Complex projects requiring multiple agent coordination |
 | ⚡ [Same-Day Cash Operator](specialized/same-day-cash-operator.md) | Gig apps, local labor, resale flips, micro-services for cash today | Survive the next 24h — timed battle plans, not motivational speeches |
+| 🚨 [Survival Mission Commander](specialized/survival-mission-commander.md) | Crisis intake, channel decision tree, hour-by-hour plays, checkpoints | Leading a $50 survival operation across every legal cash lane at once |
+| 🆘 [Emergency Resources Navigator](specialized/emergency-resources-navigator.md) | Food banks, shelter, rent/utility relief, hardship funds, crisis lines | Securing free help fast and filing aid applications with follow-ups |
+| 🏷️ [Asset Liquidation Flipper](specialized/asset-liquidation-flipper.md) | Sold-comp pricing, same-day sales, safe meetups, low-risk flips | Turning owned stuff into cash in 24–72h; flipping only with proof |
+| 🎯 [Bounty & Referral Hunter](specialized/bounty-referral-hunter.md) | Paid studies, user tests, sign-up/referral bonuses, micro-tasks, bounties | Fast legit payouts that need time, not capital — scams filtered |
+| 🤖 [AI Leverage Service Builder](specialized/ai-leverage-service-builder.md) | Productized services built with free AI/no-code tools, SOPs, quality gates | Shipping paid remote deliverables in hours with any modest skill |
 | 🔍 [LSP/Index Engineer](specialized/lsp-index-engineer.md) | Language Server Protocol, code intelligence | Code intelligence systems, LSP implementation, semantic indexing |
 | 📥 [Sales Data Extraction Agent](specialized/sales-data-extraction-agent.md) | Excel monitoring, sales metric extraction | Sales data ingestion, MTD/YTD/Year End metrics |
 | 📈 [Data Consolidation Agent](specialized/data-consolidation-agent.md) | Sales data aggregation, dashboard reports | Territory summaries, rep performance, pipeline snapshots |
@@ -438,6 +443,7 @@ Accounting, financial analysis, tax strategy, and investment research specialist
 | 🏛️ [Tax Strategist](finance/finance-tax-strategist.md) | Tax optimization, multi-jurisdictional compliance, transfer pricing | Entity structuring, ETR analysis, audit defense, strategic tax planning |
 | 🧭 [Survival Capital Allocator](finance/finance-survival-capital-allocator.md) | Micro-bankroll triage, 72h runway, income-tools vs speculative sleeve | $20–$200 survival planning — cashflow first, speculation never-first |
 | 🛡️ [Micro-Trading Risk Officer](finance/finance-micro-trading-risk-officer.md) | Fee math, risk of ruin, Go/No-Go for tiny-account scalping | Gate trading when capital is distressed; hard stops or paper-only |
+| 🩹 [Cash Bleed Stopper](finance/finance-cash-bleed-stopper.md) | Cancel auto-charges, recover refunds/deposits, defer bills, block fees | Stop money leaving a broke account on Day 1 of a cash emergency |
 
 ### 🎮 Game Development Division
 

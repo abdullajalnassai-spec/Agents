@@ -176,18 +176,35 @@
       "title": "$50 Survival Strike Team",
       "mode": "NEXUS-Micro",
       "duration": "72 hours",
-      "summary": "Micro-bankroll survival: triage capital, same-day cash and speed offers first; trading only as a capped sleeve after the floor is secure.",
+      "summary": "Micro-bankroll survival across every legal channel at once: emergency aid, stopping cash bleed, selling assets, same-day gigs, bounties, and AI-built remote services — trading only as a capped, gated sleeve last.",
       "doc": "strategy/runbooks/scenario-50-dollar-survival.md",
       "roster": [
         {
-          "group": "Core Team",
+          "group": "Command",
           "activation": "always",
           "agents": [
-            "agents-orchestrator",
+            "survival-mission-commander",
             "finance-survival-capital-allocator",
-            "same-day-cash-operator",
-            "sales-speed-closer",
             "testing-reality-checker"
+          ]
+        },
+        {
+          "group": "Money Out",
+          "activation": "hour 0-3",
+          "agents": [
+            "emergency-resources-navigator",
+            "finance-cash-bleed-stopper"
+          ]
+        },
+        {
+          "group": "Money In",
+          "activation": "hour 1-72",
+          "agents": [
+            "asset-liquidation-flipper",
+            "same-day-cash-operator",
+            "bounty-referral-hunter",
+            "ai-leverage-service-builder",
+            "sales-speed-closer"
           ]
         },
         {
@@ -198,10 +215,11 @@
           ]
         },
         {
-          "group": "After First Revenue",
-          "activation": "day 2+",
+          "group": "Stabilize",
+          "activation": "day 3+",
           "agents": [
-            "marketing-growth-hacker"
+            "marketing-growth-hacker",
+            "agents-orchestrator"
           ]
         }
       ]

@@ -1,119 +1,156 @@
 # Multi-Agent Workflow: $50 Survival Strike Team
 
-> From empty-wallet panic to a 72-hour cash plan — cashflow first, trading only if the floor is secure.
+> From empty-wallet panic to a multi-channel 72-hour cash operation — money in, money out, free help, and a tiny gated trading lane last.
 
 ## The Scenario
 
-You have about **$50**, bills pressure, and you need money as fast as possible. You're willing to consider gigs, freelancing, flipping, or even scalping/trading — but you cannot afford to vaporize the last cash on fees or a revenge trade.
+You have about **$50**, hard deadlines, and you need money as fast as possible. You'll do gigs, freelancing, selling, bounties — anything legal. You also can't afford to lose the last cash to fees, a scam, or a revenge trade.
 
 ## Agent Team
 
 | Agent | Role in this workflow |
 |-------|---------------------|
-| Agents Orchestrator | Runs the pipeline and handoffs |
-| Survival Capital Allocator | Triages the $50 into buckets; vetoes reckless all-in trades |
-| Same-Day Cash Operator | Local/gig/resale plan for cash today |
-| Speed Offer Closer | One paid freelance/micro-offer in 24–72h |
-| Micro-Trading Risk Officer | Go/No-Go on any trading sleeve; fee math + hard stops |
-| Reality Checker | Blocks fantasy "I'll 10x by Friday" plans without evidence |
-| Growth Hacker | Optional after first revenue — light loops, not day-0 spend |
+| Survival Mission Commander | Intake, safety screen, channel selection, hour-by-hour plays |
+| Survival Capital Allocator | Buckets the $50; caps/vetoes speculation |
+| Emergency Resources Navigator | Food, shelter, rent/utility relief, hardship funds, crisis lines |
+| Cash Bleed Stopper | Cancel charges, recover refunds/deposits, defer bills |
+| Asset Liquidation Flipper | Sell owned items today; low-risk flips after floor |
+| Same-Day Cash Operator | Gigs, labor, micro-services for cash tonight |
+| Bounty & Referral Hunter | Paid studies, user tests, bonuses, micro-tasks |
+| AI Leverage Service Builder | Build a sellable remote service in hours |
+| Speed Offer Closer | Sell it: one offer, 20+ touches, prepaid close |
+| Micro-Trading Risk Officer | Go/No-Go for any trading sleeve (usually NO under $200) |
+| Reality Checker | Blocks fantasy plans; measures dollars |
+| Growth Hacker | Day 3+: repeat what already paid |
 
 ## The Workflow
 
-### Hour 0–1: Triage (do not open a trading account yet)
+### Hour 0–1: Safety, intake, buckets
 
-**Step 1 — Activate Survival Capital Allocator**
+**Step 1 — Activate Survival Mission Commander**
+
+```
+Activate Survival Mission Commander.
+
+Cash: $50. Tonight: [safe place? food?]. Deadlines: [rent/bills + dates].
+Location: [city/country]. Transport: []. Skills: []. Tools: [laptop/phone/car].
+Assets I could sell: []. Auto-charges this week: []. Hours free today: [].
+
+Run the safety screen and intake, pick my channels from the decision tree,
+and give me a Day 1 hour-by-hour plan with owners and checkpoints.
+```
+
+**Step 2 — Activate Survival Capital Allocator**
 
 ```
 Activate Survival Capital Allocator.
 
-Bankroll: $50.
-Context: [housing / food / phone / city / transport / skills / hours free today].
-I want money as fast as possible. I'm open to gigs, freelance, flips, or trading/scalping.
-
-Produce a 72-Hour Capital Triage with buckets that sum to $50.
-Default bias: survival + income tools. Speculative sleeve only if floor is cleared.
+Commander's intake: [paste].
+Produce the 72-Hour Capital Triage. Buckets must sum to $50.
+Speculative sleeve = $0 unless the floor is cleared.
 ```
 
-**Step 2 — Reality gate**
+**Step 3 — Reality gate**
 
 ```
 Activate Reality Checker.
-
-Review this Capital Triage: [paste].
-Flag any plan that assumes unlikely windfalls, ignores fees, or risks rent/food money on trades.
-Verdict: APPROVED / NEEDS WORK with concrete fixes.
+Review the intake + triage: [paste]. Flag fee-blind or windfall-dependent assumptions.
+Verdict: APPROVED / NEEDS WORK with fixes.
 ```
 
-### Hour 1–8: Cash engines in parallel
+### Hour 1–3: Money out + free help + assets (all in parallel)
 
-**Step 3A — Same-Day Cash Operator (primary if local options exist)**
+**Step 4 — Cash Bleed Stopper**
+
+```
+Activate Cash Bleed Stopper.
+Next 14 days of charges/bills: [paste]. Money possibly owed to me: [deposits/refunds/payouts].
+Bleed Audit + scripts for my top 3 negotiations. Get everything in writing.
+```
+
+**Step 5 — Emergency Resources Navigator**
+
+```
+Activate Emergency Resources Navigator.
+Country/city: []. Household: []. Needs tonight: []. Bills at risk: [].
+Localized aid map; tonight's food/shelter path; file 2–5 applications with follow-up dates.
+```
+
+**Step 6 — Asset Liquidation Flipper**
+
+```
+Activate Asset Liquidation Flipper.
+What I own: [list]. Protected earning tools: [].
+Sold-comp pricing, listing copy, and 5–10 listings live within 90 minutes. Safety protocol included.
+```
+
+### Hour 3–24: Earn lanes
+
+**Step 7A — Same-Day Cash Operator** (physical + local demand)
 
 ```
 Activate Same-Day Cash Operator.
-
-Here's my triage: [paste].
-Income tools budget: $[X].
-Location: [area]. Transport: [mode]. Skills/gear: [list].
-
-Build a Same-Day Battle Plan targeting cash by tonight, with a backup channel and timed switch.
+Income tools budget: $[X]. Location/transport/skills: [].
+Timed battle plan for cash tonight with backup channel and switch trigger.
 ```
 
-**Step 3B — Speed Offer Closer (primary if remote skills / weak local market)**
+**Step 7B — AI Leverage Service Builder → Speed Offer Closer** (laptop/phone + digital skill)
+
+```
+Activate AI Leverage Service Builder.
+Skills/tools: []. Pick 1–2 services, write the SOP + quality checklist, produce a sample in ≤3h.
+```
 
 ```
 Activate Speed Offer Closer.
-
-Skills I can deliver in 24h: [list].
-Payment methods I have: [list].
-Capital for tools/ads: $[X] (usually $0–$10).
-
-Write one Offer Card + Wave 1–3 outreach. I need a paid booking ASAP — no personal-brand project.
+Service package: [paste]. Payment methods: [].
+Offer Card + Wave 1–3 outreach (≥20 touches today). Prepaid close only.
 ```
 
-### Only if floor is secure: optional trading sleeve
+**Step 7C — Bounty & Referral Hunter** (everyone, 45-minute block)
 
-**Step 4 — Micro-Trading Risk Officer**
+```
+Activate Bounty & Referral Hunter.
+Country: []. Device: []. Skills: []. Hours: [].
+Ranked board; fast lane first; flag scams and capital requirements.
+```
+
+### Hour 24–72: Convert, collect, protect
+
+**Step 8 — Optional trading gate (only if floor cleared)**
 
 ```
 Activate Micro-Trading Risk Officer.
-
-Survival floor cleared: [Y/N + proof].
-Proposed trading sleeve: $[X] (must match triage; else $0).
-Broker/market I wanted: [e.g. crypto spot / forex / whatever].
-
-Issue a Go/No-Go Trading Memo with fee math. If NO-GO or PAPER ONLY, say so first.
-If GO, give the micro protocol (risk per trade, daily/weekly stops, no-refill rule).
+Floor cleared: [Y/N + proof]. Sleeve: $[X] from triage (else $0). Market: [].
+Go/No-Go memo with fee math first. Refuse leverage on distressed capital.
 ```
 
-### Hour 24 and Hour 72: Reviews
-
-**Step 5 — Reallocate profits only**
+**Step 9 — 72-hour report**
 
 ```
-Activate Survival Capital Allocator.
-
-Results: gross $[], fees $[], net $[].
-What worked: [].
-Update buckets. Do NOT refill a lost trading sleeve from survival money.
+Activate Survival Mission Commander.
+Results: cash secured $[], pending $[], bleed stopped $[]/mo, listings sold [], applications approved [].
+Which lanes produced? Reallocate from profits only. Plan the next 72 hours.
 ```
 
-**Step 6 — Optional Growth Hacker (after first net-positive day)**
+### Day 3+: Stabilize
 
 ```
 Activate Growth Hacker.
-
-I have a repeatable offer/gig: [describe].
-Design 3 zero/low-cost experiments to get the next 5 customers — no paid ads until cash buffer ≥ $[target].
+Winning lane: [describe]. 3 zero/low-cost experiments to get the next 5 customers.
+No paid ads until buffer ≥ $[target].
 ```
 
 ## Expected Outputs
 
-1. Written $50 bucket plan  
-2. Same-day schedule and/or freelance offer + outreach list  
-3. Explicit trading verdict (often NO-GO / PAPER ONLY under $200)  
-4. 72-hour review with next actions funded by profits  
+1. Safety lane + intake + Day 1 hour-by-hour  
+2. $50 bucket plan  
+3. Bleed audit (charges killed, refunds claimed, bills deferred)  
+4. Aid map with filed applications and follow-ups  
+5. Live listings + earn-lane plan + bounty board  
+6. Explicit trading verdict (usually NO-GO / paper-only under $200)  
+7. 72-hour cash report and next plan  
 
 ## Design Principle
 
-**Cashflow that pays today beats speculation that can go to zero.** Trading is allowed only as a capped sleeve after the survival floor — never as the plan to "make it all back" with $50.
+**Work both levers — money in and money out — across several legal channels at once.** Free help, refunds, and selling what you own are often faster than any hustle. Trading is a capped, gated afterthought, never the way to "make it back" with $50.

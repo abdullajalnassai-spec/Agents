@@ -1,118 +1,186 @@
-# 🧭 Runbook: $50 Survival Strike Team
+# 🚨 Runbook: $50 Survival Strike Team
 
-> **Mode**: NEXUS-Micro | **Duration**: 72 hours (then weekly review) | **Agents**: 6–7
+> **Mode**: NEXUS-Micro | **Duration**: 72 hours (then weekly) | **Agents**: 10–13
 
 ---
 
 ## Scenario
 
-You need to survive and generate cash fast with a micro-bankroll (~$50). Speed matters more than elegance. Trading/scalping is optional and **gated** — most of the roster exists to produce legal cashflow without gambling the last dollars.
+You have ~$50, real deadlines, and no room for error. You need money **from every legal direction at once** — free help you're owed, money you can stop losing, things you can sell, work you can do today, bounties that pay for time, and remote services built in hours. Trading is a tiny, optional, gated lane at the very end — never the plan.
+
+## Safety Line (read first)
+
+If your life or safety is at risk, or you have nowhere to sleep tonight, contact your country's emergency number and a crisis line now (US: 911 / 988 / 211). The **Emergency Resources Navigator** runs this lane in parallel with the money plan — you don't have to choose.
 
 ## Agent Roster
 
-### Core Team (Always Active)
+### Command (Always Active)
 | Agent | Role |
 |-------|------|
-| Agents Orchestrator | Pipeline controller / handoffs |
-| Survival Capital Allocator | Bankroll triage, bucket rules, 72h plan |
-| Same-Day Cash Operator | Local gigs, labor, resale, same-day cash |
-| Speed Offer Closer | Productized offer + outreach to paid booking |
-| Reality Checker | Veto fantasy ROI and fee-blind plans |
+| Survival Mission Commander | Intake, channel selection, hour-by-hour plays, checkpoints |
+| Survival Capital Allocator | Bucket the $50: survival / income tools / reserved / (capped sleeve) |
+| Reality Checker | Kills fantasy plans; verifies dollars, not vibes |
 
-### Markets Sleeve (Only If Floor Cleared)
+### Money Out — Stop Losing & Get What You're Owed (Hour 0–3)
 | Agent | Role |
 |-------|------|
-| Micro-Trading Risk Officer | Go/No-Go, fee math, hard stops, paper-first |
+| Emergency Resources Navigator | Food, shelter, rent/utility relief, hardship funds, crisis lines |
+| Cash Bleed Stopper | Cancel auto-charges, claw back refunds/deposits, defer bills |
 
-### After First Revenue (Optional)
+### Money In — Fast Cash Lanes (Hour 1–72)
 | Agent | Role |
 |-------|------|
-| Growth Hacker | Low-cost loops to repeat what already paid |
+| Asset Liquidation Flipper | Sell what you own today; low-risk flips after floor |
+| Same-Day Cash Operator | Gigs, local labor, micro-services — cash tonight |
+| Bounty & Referral Hunter | Paid studies, user tests, bonuses, micro-tasks, bounties |
+| AI Leverage Service Builder | Build a sellable remote service in hours |
+| Speed Offer Closer | Sell that service: one offer, 20+ touches, prepaid close |
+
+### Markets Sleeve (Only If Floor Cleared and Allocator Approved)
+| Agent | Role |
+|-------|------|
+| Micro-Trading Risk Officer | Go/No-Go with fee math; default NO-GO / paper-only under $200 |
+
+### Stabilize (Day 3+)
+| Agent | Role |
+|-------|------|
+| Growth Hacker | Cheap loops to repeat the winning lane |
+| Agents Orchestrator | Optional pipeline control once multiple lanes are recurring |
+
+## Channel Decision Tree
+
+```
+Do you have a safe place tonight + food for 48h?
+├── NO  → Emergency Navigator FIRST (shelter/food/crisis), then Bleed Stopper, then Flipper
+└── YES → continue
+
+Do you own anything sellable (electronics, tools, bike, brand clothes)?
+├── YES → Asset Flipper lists 5–10 items within 90 min (runs in parallel with everything)
+└── NO  → skip
+
+Can you work physically + local demand exists?
+├── YES → Same-Day Cash Operator is PRIMARY earn lane
+└── NO  → continue
+
+Do you have a laptop/phone + any digital skill (writing, spreadsheets, design, language, code)?
+├── YES → AI Leverage Service Builder + Speed Offer Closer is PRIMARY earn lane
+└── NO  → Bounty & Referral Hunter is PRIMARY earn lane (phone + time)
+
+Always running: Bleed Stopper (Day 1), Emergency Navigator (applications + follow-ups)
+Never first: Micro-Trading (sleeve ≤10%, floor cleared, allocator approved, else $0)
+```
 
 ## 72-Hour Execution
 
-### Hour 0–1: Discovery + Capital Triage
+### Hour 0–1: Safety, Intake, Buckets
 
 ```
-Hour 0–1: Floor + Buckets
-├── Survival Capital Allocator → 72-Hour Capital Triage ($ buckets)
-├── Reality Checker → Approve / NEEDS WORK on the triage
-└── Quality Gate: No trading allocation until floor = secured
+├── Commander → safety screen + 10-minute intake
+├── Capital Allocator → 72h triage ($ buckets sum to bankroll)
+├── Reality Checker → APPROVED / NEEDS WORK
+└── Gate: no trading allocation unless floor secured
 ```
 
-### Hour 1–24: Cash Sprint
+### Hour 1–3: Stop the Bleed + Free Help + List Assets
 
 ```
-Hour 1–24: Dual cash engines
-├── Same-Day Cash Operator → Battle plan + timed channel switch
-├── Speed Offer Closer → Offer Card + ≥20 outreach touches
-├── Agents Orchestrator → Keep both in sync; avoid capital double-spend
-└── Midpoint check (Hour 8): switch channels / revise offer if $0 conversations
+├── Cash Bleed Stopper → cancel/pause auto-charges, claim refunds/deposits, defer top 3 bills
+├── Emergency Navigator → tonight's food/shelter path; file 2–5 applications
+├── Asset Flipper → 5–10 listings live with sold-comp pricing
+└── Checkpoint (Hour 3): monthly bleed stopped $__, applications filed __, listings live __
 ```
 
-### Hour 24–72: Close + Optional Markets
+### Hour 3–24: Earn Lanes
 
 ```
-Hour 24–72: Convert + protect
-├── Close first paid gig/job (deposit or full pay)
-├── Micro-Trading Risk Officer → ONLY if sleeve > 0 and floor still OK
-│   └── Default outcomes under $200: NO-GO or PAPER ONLY
-├── Survival Capital Allocator → Reallocate from profits only
-└── Reality Checker → End-of-window review (net cash, not vibes)
+├── PRIMARY earn lane (from decision tree) goes live
+│   ├── Same-Day Cash Operator → battle plan + timed channel switch
+│   └── or AI Service Builder (SOP + sample in ≤3h) → Speed Offer Closer (Wave 1–3, ≥20 touches)
+├── Bounty Hunter → 2–3 fast-lane sign-ups + screeners (45 min block)
+├── Flipper → respond to buyers within 10 min; close safe meetups
+├── Checkpoint 13:00 / 18:00 → zero signal in a lane = switch to backup
+└── Commander enforces food + sleep
 ```
 
-### Day 4+: Stabilize
+### Hour 24–72: Convert, Collect, Protect
 
 ```
-After first net-positive day
-├── Growth Hacker → 3 cheap experiments on the winning offer/gig
-├── Raise freelance prices after 2 deliveries
-└── Keep speculative sleeve capped; never refill from rent/food
+├── Close first paid gig / order / sale; collect deposits + payouts
+├── Navigator + Bleed Stopper → follow-ups on every pending application/refund
+├── Capital Allocator → reallocate ONLY from profits
+├── Micro-Trading Risk Officer → ONLY if sleeve > 0 and floor still OK (expect NO-GO)
+└── Reality Checker → 72h report in cash terms
+```
+
+### Day 3+: Stabilize
+
+```
+├── Repeat the winning lane; raise prices after 2 clean deliveries
+├── Growth Hacker → 3 zero/low-cost experiments on the winner
+├── Flip loop only from profits; never from survival buffer
+└── Weekly: bleed audit + aid follow-ups + bucket review
 ```
 
 ## Activation Prompts
 
-### Capital triage
-
+### Commander
 ```
-Activate Survival Capital Allocator.
-Bankroll: $50. Constraints: [food/shelter/phone/skills/location].
-Output the triage table and primary + backup engines for 72 hours.
-```
-
-### Same-day cash
-
-```
-Activate Same-Day Cash Operator.
-Income tools budget: $[X]. Build today's timed battle plan with backup switch.
+Activate Survival Mission Commander.
+Cash: $50. Situation: [shelter/food/deadlines/location/skills/assets/hours].
+Run the intake, pick my channels, and give me Day 1 hour-by-hour.
 ```
 
-### Speed close
-
+### Emergency aid
 ```
-Activate Speed Offer Closer.
-Skills deliverable in 24h: [list]. One offer, prepaid, Wave 1 today.
+Activate Emergency Resources Navigator.
+Country/city: []. Household: []. Needs tonight: []. Bills at risk: [].
+Give me the localized aid map and file the top applications with me.
+```
+
+### Stop the bleed
+```
+Activate Cash Bleed Stopper.
+Here are my next 14 days of charges and bills: [].
+Cancel/pause what isn't survival, find money owed to me, and script my top 3 negotiations.
+```
+
+### Sell assets
+```
+Activate Asset Liquidation Flipper.
+Here's what I own: []. Protected tools: [].
+Price with sold comps and get 5–10 listings live in 90 minutes.
+```
+
+### Bounties
+```
+Activate Bounty & Referral Hunter.
+Country: []. Device: []. Skills: []. Hours today: [].
+Ranked bounty board — fast lane first, scams flagged.
+```
+
+### Remote service
+```
+Activate AI Leverage Service Builder.
+Skills/tools: []. Then hand the package to Speed Offer Closer for a prepaid booking.
 ```
 
 ### Trading gate
-
 ```
 Activate Micro-Trading Risk Officer.
-Floor cleared: [Y/N]. Sleeve: $[X]. Market: [X].
-Go/No-Go memo with fee math first. Refuse leverage on distressed capital.
+Floor cleared: [Y/N]. Sleeve: $[X]. Go/No-Go with fee math first.
 ```
 
 ## Success Criteria
 
-- Written bucket plan that sums to the bankroll  
-- At least one monetizable action in the first 60 minutes  
-- Trading never funded with money needed for food/shelter  
-- Net cash progress by hour 72 **or** a revised plan based on real market feedback (not hope)  
-- Reality Checker sign-off that the plan is executable and non-fantastical  
+- Safety lane surfaced within minutes when risk indicators exist
+- Bucket plan sums to the bankroll; no trading money from food/shelter
+- ≥3 channels live by hour 3; ≥1 monetizable action inside 60 minutes
+- Day 1: bleed stopped, applications filed, listings live, outreach sent
+- Hour 72: cash secured or approved, or a data-driven pivot (not hope)
 
 ## Anti-Goals
 
-- All-in scalping the last $50  
-- Buying courses/signals before first revenue  
-- Five half-started hustles and zero completed outreach  
-- Refilling a blown trading sleeve from the survival buffer  
+- Trading-only or all-in scalping the last $50
+- Buying inventory, courses, or ads before first revenue
+- Ignoring free aid and refunds because "I should earn it"
+- Ten half-started lanes, zero completed follow-ups
