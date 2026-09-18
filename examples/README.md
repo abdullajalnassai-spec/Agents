@@ -10,6 +10,16 @@ These examples answer the question: *"What does it actually look like when the f
 
 ## Contents
 
+### [workflow-50-dollar-survival.md](./workflow-50-dollar-survival.md)
+
+**What:** A 72-hour multi-agent strike team for surviving and earning with a ~$50 bankroll.
+
+**The scenario:** You need cash fast. The roster triages the bankroll, runs same-day gigs and speed freelance offers in parallel, and only opens a trading/scalping sleeve if food/shelter are already secure — usually with a NO-GO or paper-only verdict under $200 because fees dominate.
+
+**Agents used:** Survival Capital Allocator, Same-Day Cash Operator, Speed Offer Closer, Micro-Trading Risk Officer, Reality Checker, Agents Orchestrator, Growth Hacker (after first revenue).
+
+**Also see:** [strategy/runbooks/scenario-50-dollar-survival.md](../strategy/runbooks/scenario-50-dollar-survival.md) (NEXUS runbook + `runbooks.json` roster).
+
 ### [nexus-spatial-discovery.md](./nexus-spatial-discovery.md)
 
 **What:** A complete product discovery exercise where 8 agents worked in parallel to evaluate a software opportunity and produce a unified plan.

@@ -170,6 +170,41 @@
           ]
         }
       ]
+    },
+    {
+      "slug": "50-dollar-survival",
+      "title": "$50 Survival Strike Team",
+      "mode": "NEXUS-Micro",
+      "duration": "72 hours",
+      "summary": "Micro-bankroll survival: triage capital, same-day cash and speed offers first; trading only as a capped sleeve after the floor is secure.",
+      "doc": "strategy/runbooks/scenario-50-dollar-survival.md",
+      "roster": [
+        {
+          "group": "Core Team",
+          "activation": "always",
+          "agents": [
+            "agents-orchestrator",
+            "finance-survival-capital-allocator",
+            "same-day-cash-operator",
+            "sales-speed-closer",
+            "testing-reality-checker"
+          ]
+        },
+        {
+          "group": "Markets Sleeve",
+          "activation": "floor cleared only",
+          "agents": [
+            "finance-micro-trading-risk-officer"
+          ]
+        },
+        {
+          "group": "After First Revenue",
+          "activation": "day 2+",
+          "agents": [
+            "marketing-growth-hacker"
+          ]
+        }
+      ]
     }
   ]
 }
