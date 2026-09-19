@@ -29,6 +29,33 @@
   gap: 1rem;
 }
 
+.proof-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 1.4rem 1.5rem;
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.proof-bar.four {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.proof-bar strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  letter-spacing: -0.04em;
+}
+
+.proof-bar span {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
 .dash-grid > :last-child {
   grid-column: 1 / -1;
 }

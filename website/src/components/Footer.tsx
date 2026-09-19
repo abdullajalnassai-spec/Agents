@@ -20,8 +20,9 @@ export function Footer() {
           <h4>Product</h4>
           <Link to="/platform">Platform</Link>
           <Link to="/pricing">Pricing</Link>
-          <Link to="/waitlist">Waitlist</Link>
+          <Link to="/checkout">Checkout</Link>
           <Link to="/login">Member hub</Link>
+          <Link to="/admin">Ops admin</Link>
         </div>
         <div>
           <h4>Company</h4>

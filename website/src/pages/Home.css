@@ -166,6 +166,10 @@
   box-shadow: var(--shadow);
 }
 
+.proof-bar.four {
+  grid-template-columns: repeat(4, 1fr);
+}
+
 .proof-bar strong {
   display: block;
   font-family: var(--font-display);

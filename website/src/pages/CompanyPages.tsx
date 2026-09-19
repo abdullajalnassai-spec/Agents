@@ -102,8 +102,8 @@ export function Pricing() {
             name: "Meridian Core",
             price: "$1,995",
             note: "One-time enrollment",
-            href: "/waitlist",
-            cta: "Get Core access",
+            href: "/checkout",
+            cta: "Checkout — $1,995",
             items: [
               "Forge AI · 12 months",
               "Digital Product Formula",

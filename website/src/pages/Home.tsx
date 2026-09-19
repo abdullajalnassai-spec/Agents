@@ -47,11 +47,11 @@ export function Home() {
             so you can launch a faceless digital offer without an audience or ad budget.
           </p>
           <div className="hero-cta rise rise-delay-3">
-            <Link to="/waitlist" className="btn btn-lime">
-              Join the waitlist
+            <Link to="/checkout" className="btn btn-lime">
+              Enroll now — $1,995
             </Link>
-            <Link to="/platform" className="btn btn-ghost">
-              See the platform
+            <Link to="/waitlist" className="btn btn-ghost">
+              Join the waitlist
             </Link>
           </div>
         </div>
@@ -134,8 +134,8 @@ export function Home() {
             Either you multiply your investment with the system, or we keep consulting and updating
             with you under the published support terms. Plus 7 days to change your mind.
           </p>
-          <Link to="/waitlist" className="btn btn-primary">
-            Reserve your spot
+          <Link to="/checkout" className="btn btn-primary">
+            Enroll now
           </Link>
         </div>
       </section>
@@ -175,8 +175,8 @@ export function Home() {
           <h2>Ready when enrollment opens</h2>
           <p>Join the waitlist for launch access, onboarding slots, and founder updates.</p>
         </div>
-        <Link to="/waitlist" className="btn btn-lime">
-          Join waitlist
+        <Link to="/checkout" className="btn btn-lime">
+          Enroll now
         </Link>
       </section>
     </div>

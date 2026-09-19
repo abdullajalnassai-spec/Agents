@@ -1,7 +1,8 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import type { FormEvent } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { blogPosts, careers, brand } from "../data/content";
+import { loginMember, submitContact, submitWaitlist } from "../lib/api";
 import {
   addContactEntry,
   addProduct,
@@ -9,7 +10,6 @@ import {
   clearSession,
   getProducts,
   getSession,
-  getWaitlist,
   setSession,
 } from "../lib/store";
 import "./SimplePages.css";
@@ -18,22 +18,29 @@ import "./Ops.css";
 export function Waitlist() {
   const [done, setDone] = useState(false);
   const [error, setError] = useState("");
-  const count = useMemo(() => getWaitlist().length, [done]);
+  const [busy, setBusy] = useState(false);
 
-  function onSubmit(event: FormEvent<HTMLFormElement>) {
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const data = new FormData(form);
     const name = String(data.get("name") || "").trim();
     const email = String(data.get("email") || "").trim();
-    const goal = String(data.get("goal") || "").trim();
+    const goal = String(data.get("goal") || "").trim() || "Launch a digital product";
     if (!name || !email.includes("@")) {
       setError("Enter your name and a valid email.");
       return;
     }
-    addWaitlistEntry({ name, email, goal: goal || "Launch a digital product" });
+    setBusy(true);
     setError("");
+    try {
+      await submitWaitlist({ name, email, goal });
+    } catch {
+      addWaitlistEntry({ name, email, goal });
+    }
     setDone(true);
-    event.currentTarget.reset();
+    setBusy(false);
+    form.reset();
   }
 
   return (
@@ -44,7 +51,7 @@ export function Waitlist() {
           <h1>Get launch access before enrollment fills.</h1>
           <p>
             Spots open in cohorts. Join the list for timing, onboarding slots, and early studio
-            walkthroughs. {count > 0 ? `${count} saved on this device.` : null}
+            walkthroughs. Signups save to the Meridian database when the API is running.
           </p>
         </div>
         <form className="ops-panel form-grid" onSubmit={onSubmit}>
@@ -62,8 +69,8 @@ export function Waitlist() {
             <label htmlFor="goal">What do you want to build?</label>
             <input id="goal" name="goal" placeholder="Faceless template pack for freelancers" />
           </div>
-          <button className="btn btn-lime" type="submit">
-            Join waitlist
+          <button className="btn btn-lime" type="submit" disabled={busy}>
+            {busy ? "Saving…" : "Join waitlist"}
           </button>
         </form>
       </section>
@@ -73,18 +80,35 @@ export function Waitlist() {
 
 export function Contact() {
   const [done, setDone] = useState(false);
+  const [error, setError] = useState("");
+  const [busy, setBusy] = useState(false);
 
-  function onSubmit(event: FormEvent<HTMLFormElement>) {
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    addContactEntry({
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    const payload = {
       name: String(data.get("name") || "").trim(),
       email: String(data.get("email") || "").trim(),
       topic: String(data.get("topic") || "General"),
       message: String(data.get("message") || "").trim(),
-    });
+    };
+    setBusy(true);
+    setError("");
+    try {
+      await submitContact(payload);
+    } catch {
+      try {
+        addContactEntry(payload);
+      } catch {
+        setError("Could not save message.");
+        setBusy(false);
+        return;
+      }
+    }
     setDone(true);
-    event.currentTarget.reset();
+    setBusy(false);
+    form.reset();
   }
 
   return (
@@ -99,7 +123,8 @@ export function Contact() {
           </p>
         </div>
         <form className="ops-panel form-grid" onSubmit={onSubmit}>
-          {done ? <div className="notice">Message saved. In production this routes to your CRM or inbox.</div> : null}
+          {done ? <div className="notice">Message received. Our team will follow up.</div> : null}
+          {error ? <div className="notice error">{error}</div> : null}
           <div className="form-grid two">
             <div className="field">
               <label htmlFor="cname">Name</label>
@@ -123,8 +148,8 @@ export function Contact() {
             <label htmlFor="message">Message</label>
             <textarea id="message" name="message" required />
           </div>
-          <button className="btn btn-primary" type="submit">
-            Send message
+          <button className="btn btn-primary" type="submit" disabled={busy}>
+            {busy ? "Sending…" : "Send message"}
           </button>
         </form>
       </section>
@@ -135,16 +160,24 @@ export function Contact() {
 export function Login() {
   const navigate = useNavigate();
   const existing = getSession();
+  const [error, setError] = useState("");
+  const [busy, setBusy] = useState(false);
   if (existing) return <Navigate to="/dashboard" replace />;
 
-  function onSubmit(event: FormEvent<HTMLFormElement>) {
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    setSession({
-      name: String(data.get("name") || "Member").trim() || "Member",
-      email: String(data.get("email") || "").trim(),
-      plan: "Meridian Core",
-    });
+    const name = String(data.get("name") || "Member").trim() || "Member";
+    const email = String(data.get("email") || "").trim();
+    setBusy(true);
+    setError("");
+    try {
+      const profile = await loginMember({ name, email });
+      setSession({ name: profile.name, email: profile.email, plan: profile.plan });
+    } catch {
+      setSession({ name, email, plan: "Guest preview" });
+    }
+    setBusy(false);
     navigate("/dashboard");
   }
 
@@ -154,8 +187,9 @@ export function Login() {
         <p className="eyebrow">Member hub</p>
         <h1>Log in to your studio</h1>
         <p className="muted" style={{ margin: "0.75rem 0 1.5rem" }}>
-          Demo auth — any email works. Your session stays in this browser.
+          Paid members unlock Core after checkout. Any email still opens a preview hub.
         </p>
+        {error ? <div className="notice error">{error}</div> : null}
         <form className="ops-panel form-grid" onSubmit={onSubmit}>
           <div className="field">
             <label htmlFor="lname">Name</label>
@@ -165,8 +199,8 @@ export function Login() {
             <label htmlFor="lemail">Email</label>
             <input id="lemail" name="email" type="email" required placeholder="you@email.com" />
           </div>
-          <button className="btn btn-lime" type="submit">
-            Enter dashboard
+          <button className="btn btn-lime" type="submit" disabled={busy}>
+            {busy ? "Signing in…" : "Enter dashboard"}
           </button>
         </form>
       </section>

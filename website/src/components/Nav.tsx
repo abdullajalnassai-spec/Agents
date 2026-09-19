@@ -29,8 +29,8 @@ export function Nav() {
           <Link to="/login" className="nav-login">
             Member login
           </Link>
-          <Link to="/waitlist" className="btn btn-primary nav-cta">
-            Join waitlist
+          <Link to="/checkout" className="btn btn-primary nav-cta">
+            Enroll now
           </Link>
         </div>
       </div>
