@@ -1,11 +1,13 @@
-name: Deploy Meridian website
+name: Deploy Emonphenom HQ
 
 on:
   push:
     branches: [cursor/meridian-company-website-10e0, main, claude/agency-agents-repo-49vdhc]
     paths:
       - "website/**"
-      - ".github/workflows/meridian-website.yml"
+      - ".github/workflows/**"
+  schedule:
+    - cron: "0 6 * * 1"
   workflow_dispatch:
 
 permissions:
@@ -18,7 +20,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  build-and-verify:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -31,7 +33,12 @@ jobs:
           cache: npm
           cache-dependency-path: website/package-lock.json
       - run: npm ci
-      - run: npm run build
+      - name: Self-check forge engine
+        run: node scripts/selfcheck.mjs
+      - name: Build
+        run: npm run build
+        env:
+          VITE_BASE: /Agents/
       - name: Prepare Pages artifact
         run: |
           cp dist/index.html dist/404.html
@@ -40,7 +47,7 @@ jobs:
           path: website/dist
 
   deploy:
-    needs: build
+    needs: build-and-verify
     runs-on: ubuntu-latest
     environment:
       name: github-pages

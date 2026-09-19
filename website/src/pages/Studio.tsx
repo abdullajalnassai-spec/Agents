@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { FormEvent, ReactNode } from "react";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import { brand } from "../data/content";
 import {
   clearOwnerSession,
   fetchMe,
@@ -18,37 +19,46 @@ import "./SimplePages.css";
 import "./Studio.css";
 
 function OwnerGate({ children }: { children: ReactNode }) {
-  const [ready, setReady] = useState(false);
-  const [ok, setOk] = useState(Boolean(getOwnerToken()));
+  const [state, setState] = useState<"loading" | "ok" | "deny">(
+    getOwnerToken() && getOwnerUser() ? "ok" : getOwnerToken() ? "loading" : "deny",
+  );
 
   useEffect(() => {
     const token = getOwnerToken();
     if (!token) {
-      setOk(false);
-      setReady(true);
+      setState("deny");
       return;
     }
     fetchMe()
-      .then(() => setOk(true))
+      .then(() => setState("ok"))
       .catch(() => {
         clearOwnerSession();
-        setOk(false);
-      })
-      .finally(() => setReady(true));
+        setState("deny");
+      });
   }, []);
 
-  if (!ready) return <div className="page simple-page shell"><p>Checking owner access…</p></div>;
-  if (!ok) return <Navigate to="/owner" replace />;
+  if (state === "loading") {
+    return (
+      <div className="page simple-page">
+        <div className="shell narrow">
+          <p className="eyebrow">HQ</p>
+          <h1>Unlocking owner access…</h1>
+        </div>
+      </div>
+    );
+  }
+  if (state === "deny") return <Navigate to="/owner" replace />;
   return <>{children}</>;
 }
 
 export function OwnerLogin() {
   const navigate = useNavigate();
-  const existing = getOwnerUser();
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
 
-  if (existing && getOwnerToken()) return <Navigate to="/studio" replace />;
+  useEffect(() => {
+    if (getOwnerToken() && getOwnerUser()) navigate("/studio", { replace: true });
+  }, [navigate]);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -67,24 +77,23 @@ export function OwnerLogin() {
   return (
     <div className="page simple-page">
       <section className="shell narrow">
-        <p className="eyebrow">Private company</p>
-        <h1>Owner access only</h1>
+        <p className="eyebrow">Private HQ</p>
+        <h1>Emonphenom owner access</h1>
         <p className="muted" style={{ margin: "0.75rem 0 1.5rem" }}>
-          Meridian is Abdulla Alnassai’s private digital-product company OS. Sign in to run the AI
-          product forge.
+          Headquarters for {brand.owner} to create and sell AI digital products. Owner login only.
         </p>
         {error ? <div className="notice error">{error}</div> : null}
         <form className="ops-panel form-grid" onSubmit={onSubmit}>
           <div className="field">
             <label htmlFor="email">Owner email</label>
-            <input id="email" name="email" type="email" required defaultValue="abdulla.j.alnassai@gmail.com" />
+            <input id="email" name="email" type="email" required defaultValue={brand.ownerEmail} />
           </div>
           <div className="field">
             <label htmlFor="password">Password</label>
-            <input id="password" name="password" type="password" required />
+            <input id="password" name="password" type="password" required autoComplete="current-password" />
           </div>
           <button className="btn btn-lime" type="submit" disabled={busy}>
-            {busy ? "Signing in…" : "Enter studio"}
+            {busy ? "Signing in…" : "Enter HQ"}
           </button>
         </form>
       </section>
@@ -115,9 +124,9 @@ function StudioHomeInner() {
     <div className="page simple-page">
       <section className="shell dash-head">
         <div>
-          <p className="eyebrow">Studio</p>
+          <p className="eyebrow">HQ studio</p>
           <h1>Welcome, {user?.name || "Owner"}</h1>
-          <p>Private AI digital product company — Develop → Distribute → Deliver → Scale</p>
+          <p>Create → distribute → deliver → scale AI digital products</p>
         </div>
         <button
           className="btn btn-ghost"
@@ -142,7 +151,7 @@ function StudioHomeInner() {
 
       <section className="shell">
         <div className="section-head">
-          <h2>Your product pipeline</h2>
+          <h2>Product pipeline</h2>
           <p>Every forge run saves a full launch pack you can reopen anytime.</p>
         </div>
         <div className="product-list ops-panel">
@@ -175,23 +184,28 @@ function StudioForgeInner() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [step, setStep] = useState(0);
-  const [result, setResult] = useState<Record<string, unknown> | null>(null);
+  const [result, setResult] = useState<(ForgeResultView & { id: string }) | null>(null);
 
   const steps = ["Brief", "Research", "Product", "Sales page", "Distribution", "Launch pack"];
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    const topic = String(data.get("topic") || "").trim();
+    if (!topic) {
+      setError("Enter a niche or topic.");
+      return;
+    }
     setBusy(true);
     setError("");
     setStep(1);
     try {
       const pack = await runForge({
-        topic: String(data.get("topic") || ""),
-        audience: String(data.get("audience") || ""),
+        topic,
+        audience: String(data.get("audience") || "").trim(),
         productType: String(data.get("productType") || "Template pack"),
       });
-      setResult(pack);
+      setResult(pack as ForgeResultView & { id: string });
       setStep(5);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Forge failed");
@@ -200,18 +214,18 @@ function StudioForgeInner() {
     }
   }
 
-  const research = result?.research as Record<string, unknown> | undefined;
-  const product = result?.product as Record<string, unknown> | undefined;
-  const sales = result?.sales as Record<string, unknown> | undefined;
-  const distribution = result?.distribution as Record<string, unknown> | undefined;
-  const launch = result?.launch as Record<string, unknown> | undefined;
+  const research = result?.research;
+  const product = result?.product;
+  const sales = result?.sales;
+  const distribution = result?.distribution;
+  const launch = result?.launch;
 
   return (
     <div className="page simple-page">
       <section className="shell page-hero">
         <p className="eyebrow">AI product forge</p>
         <h1>Build a faceless digital product end-to-end</h1>
-        <p>Same operating procedure as elite digital-product systems — research, build, copy, distribute, launch.</p>
+        <p>Professional HQ procedure: research, build, copy, distribute, launch.</p>
       </section>
 
       <section className="shell step-rail">
@@ -237,7 +251,6 @@ function StudioForgeInner() {
                 id="audience"
                 name="audience"
                 defaultValue="Faceless beginners who want results without a personal brand"
-                placeholder="Busy freelancers who hate showing their face"
               />
             </div>
             <div className="field">
@@ -260,12 +273,12 @@ function StudioForgeInner() {
           <article className="ops-panel">
             <h2>1. Research</h2>
             <p>
-              <strong>{String(research?.niche)}</strong> · demand {String(research?.demand)} · competition{" "}
-              {String(research?.competition)} · score {String(research?.opportunityScore)}
+              <strong>{research?.niche}</strong> · demand {research?.demand} · competition{" "}
+              {research?.competition} · score {research?.opportunityScore}
             </p>
-            <p className="muted">{String(research?.positioning)}</p>
+            <p className="muted">{research?.positioning}</p>
             <ul>
-              {((research?.gaps as string[]) || []).map((gap) => (
+              {(research?.gaps || []).map((gap) => (
                 <li key={gap}>{gap}</li>
               ))}
             </ul>
@@ -273,35 +286,35 @@ function StudioForgeInner() {
 
           <article className="ops-panel">
             <h2>2. Product</h2>
-            <h3>{String(product?.title)}</h3>
+            <h3>{product?.title}</h3>
             <p className="muted">
-              {String(product?.productType)} · suggested ${String(product?.priceSuggestion)}
+              {product?.productType} · suggested ${product?.priceSuggestion}
             </p>
-            <pre className="export-box">{String(product?.deliverable)}</pre>
+            <pre className="export-box">{product?.deliverable}</pre>
           </article>
 
           <article className="ops-panel">
             <h2>3. Sales page</h2>
-            <h3>{String(sales?.headline)}</h3>
-            <p>{String(sales?.subhead)}</p>
+            <h3>{sales?.headline}</h3>
+            <p>{sales?.subhead}</p>
             <ul>
-              {((sales?.bullets as string[]) || []).map((item) => (
+              {(sales?.bullets || []).map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
-            <pre className="export-box">{String(sales?.body)}</pre>
+            <pre className="export-box">{sales?.body}</pre>
           </article>
 
           <article className="ops-panel">
             <h2>4. Distribution</h2>
-            <p>{String(distribution?.strategy)}</p>
+            <p>{distribution?.strategy}</p>
             <ul>
-              {((distribution?.weeklyPlan as string[]) || []).map((item) => (
+              {(distribution?.weeklyPlan || []).map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
             <div className="product-list">
-              {((distribution?.leads as Array<Record<string, string>>) || []).map((lead) => (
+              {(distribution?.leads || []).map((lead) => (
                 <div key={lead.name} className="product-row">
                   <div>
                     <strong>{lead.name}</strong>
@@ -318,21 +331,21 @@ function StudioForgeInner() {
           <article className="ops-panel">
             <h2>5. Launch pack</h2>
             <ul className="checklist">
-              {((launch?.checklist as string[]) || []).map((item) => (
+              {(launch?.checklist || []).map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
-            <pre className="export-box">{String((launch as { exportMarkdown?: string })?.exportMarkdown)}</pre>
+            <pre className="export-box">{launch?.exportMarkdown}</pre>
             <div className="studio-actions" style={{ marginTop: "1rem" }}>
               <button
                 className="btn btn-primary"
                 type="button"
-                onClick={() => navigate(`/studio/products/${String(result.id)}`)}
+                onClick={() => navigate(`/studio/products/${result.id}`)}
               >
                 Open saved product
               </button>
               <button className="btn btn-ghost" type="button" onClick={() => navigate("/studio")}>
-                Back to studio
+                Back to HQ
               </button>
             </div>
           </article>
@@ -341,6 +354,8 @@ function StudioForgeInner() {
     </div>
   );
 }
+
+type ForgeResultView = Awaited<ReturnType<typeof runForge>>;
 
 export function StudioProduct() {
   return (
@@ -352,7 +367,7 @@ export function StudioProduct() {
 
 function StudioProductInner() {
   const { id = "" } = useParams();
-  const [product, setProduct] = useState<Record<string, unknown> | null>(null);
+  const [product, setProduct] = useState<Awaited<ReturnType<typeof getProduct>> | null>(null);
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -362,18 +377,23 @@ function StudioProductInner() {
   }, [id]);
 
   if (error) return <div className="page shell notice error">{error}</div>;
-  if (!product) return <div className="page shell"><p>Loading product…</p></div>;
+  if (!product) {
+    return (
+      <div className="page shell narrow">
+        <p>Loading product…</p>
+      </div>
+    );
+  }
 
-  const payload = product.payload as Record<string, unknown>;
-  const launch = payload.launch as { exportMarkdown?: string; checklist?: string[] };
+  const launch = product.payload.launch;
 
   return (
     <div className="page simple-page">
       <section className="shell dash-head">
         <div>
-          <p className="eyebrow">{String(product.status)}</p>
-          <h1>{String(product.title)}</h1>
-          <p>{String(product.niche)}</p>
+          <p className="eyebrow">{product.status}</p>
+          <h1>{product.title}</h1>
+          <p>{product.niche}</p>
         </div>
         <button
           className="btn btn-lime"
@@ -390,11 +410,11 @@ function StudioProductInner() {
         <article className="ops-panel">
           <h2>Launch checklist</h2>
           <ul className="checklist">
-            {(launch?.checklist || []).map((item) => (
+            {launch.checklist.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
-          <pre className="export-box">{launch?.exportMarkdown}</pre>
+          <pre className="export-box">{launch.exportMarkdown}</pre>
         </article>
       </section>
     </div>

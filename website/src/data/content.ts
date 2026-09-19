@@ -1,255 +1,130 @@
 export const brand = {
-  name: "Meridian",
-  tagline: "Abdulla Alnassai’s private AI digital product company",
+  name: "Emonphenom",
+  legalName: "Emonphenom HQ",
+  tagline: "The HQ that creates and sells AI digital products",
   supportEmail: "abdulla.j.alnassai@gmail.com",
-  whatsapp: "+1 555 010 2290",
   owner: "Abdulla Alnassai",
+  ownerEmail: "abdulla.j.alnassai@gmail.com",
+};
+
+/** Owner credentials verified in-browser with PBKDF2 (no backend required). */
+export const ownerAuth = {
+  email: "abdulla.j.alnassai@gmail.com",
+  name: "Abdulla Alnassai",
+  saltHex: "3f5d34e479f7b6717d015b030a99a384",
+  hashHex: "d5791c30f3513206523f823ddf180704d0508e3692cd6a7588045550376ca62c",
+  iterations: 120000,
 };
 
 export const stats = [
-  { value: "$48M+", label: "Tracked member sales" },
-  { value: "12,400+", label: "Builders in the system" },
-  { value: "4.9/5", label: "From 3,200+ reviews" },
+  { value: "Full HQ", label: "Create → sell → scale" },
+  { value: "AI forge", label: "Products in one run" },
+  { value: "Owner-only", label: "Private command center" },
 ];
 
 export const offers = [
   {
-    id: "forge-ai",
-    name: "Forge AI",
-    value: "$2,999",
-    blurb:
-      "Specialized AI that researches niches and builds a complete digital product for you — outline, assets, and delivery pack.",
-    points: [
-      "Spot what’s selling and where the gaps are",
-      "Hands-free product structure and assets",
-      "12 months unlimited credits",
-    ],
+    id: "forge",
+    name: "Product Forge",
+    value: "Core",
+    blurb: "Research niches and generate a complete digital product pack — outline, assets, and delivery files.",
+    points: ["Niche demand scoring", "Faceless offer structure", "Unlimited drafts in your HQ"],
   },
   {
-    id: "formula",
-    name: "Digital Product Formula",
-    value: "$1,495",
-    blurb:
-      "The four-step blueprint: Develop, Distribute, Deliver, Scale. Follow along from absolute zero with every click mapped.",
-    points: [
-      "Zero-to-launch training path",
-      "Build your product beside the playbook",
-      "Never guess the next step",
-    ],
+    id: "copy",
+    name: "Sales Engine",
+    value: "Core",
+    blurb: "Conversion-ready sales pages and email sequences trained on high-performing digital product funnels.",
+    points: ["Headline + offer page", "3 launch emails", "CTA packing for storefronts"],
   },
   {
     id: "signal",
-    name: "Signal Kit + 100 Leads",
-    value: "$7,164",
-    blurb:
-      "Distribution software that surfaces buyer pools inside audiences someone else already built — plus 100 pre-vetted leads.",
-    points: [
-      "Find untapped partner audiences",
-      "100 filtered leads from day one",
-      "Full year of access included",
-    ],
+    name: "Distribution Desk",
+    value: "Core",
+    blurb: "Partner-first distribution: pre-scored lead angles and weekly outreach plans without ad spend.",
+    points: ["Partner pitch scripts", "Weekly launch cadence", "Faceless distribution path"],
   },
   {
-    id: "insurance",
-    name: "Launch Insurance",
-    value: "$7,800",
-    blurb:
-      "No first sale in 60 days? Our success team reviews your offer and hands you a customized action plan.",
-    points: [
-      "60-day safety net",
-      "Same operators behind $100M+ brands",
-      "You don’t have to figure it out alone",
-    ],
+    id: "ops",
+    name: "Launch Ops",
+    value: "Core",
+    blurb: "Checklist, pipeline, and status tracking so every product moves from draft to live sale.",
+    points: ["Launch checklist", "Pipeline statuses", "Owner ops admin"],
   },
 ];
 
 export const bonuses = [
-  {
-    name: "Meridian Mania",
-    blurb: "90-day competition. Everyone starts at zero. Top finishers earn in-person invites and prizes.",
-  },
-  {
-    name: "Dedicated Support",
-    blurb: "Weekly Q&A, live onboarding, and a success team answering questions inside the community.",
-  },
-  {
-    name: "Copyforge OS",
-    blurb: "AI that writes converting product pages in under a minute — unlimited credits for 12 months.",
-  },
+  { name: "90-Day Ship Sprint", blurb: "A cadence to forge, pitch, and soft-launch on a weekly loop." },
+  { name: "HQ Playbook", blurb: "The exact Develop → Distribute → Deliver → Scale procedure inside Studio." },
+  { name: "Owner Vault", blurb: "Private storage for every launch pack you forge — reopen anytime." },
 ];
 
 export const stories = [
-  {
-    name: "Zara",
-    detail: "Built while raising two kids — first launch cleared five figures without showing her face.",
-  },
-  {
-    name: "Mateo",
-    detail: "Full-time student. Used Forge AI after lectures and crossed his first $40k in seven months.",
-  },
-  {
-    name: "Aisha",
-    detail: "Failed at dropshipping twice. First Meridian product did $21k and she left her third job.",
-  },
-  {
-    name: "Noah",
-    detail: "12-hour shifts. Partnered via Signal Kit and retired his spouse’s income stress within a year.",
-  },
+  { name: "Forge", detail: "Turn a niche into a priced digital product pack without showing your face." },
+  { name: "Sell", detail: "Ship a sales page + emails ready for Whop, Gumroad, or your storefront." },
+  { name: "Distribute", detail: "Pitch partners with scored leads instead of guessing on ads." },
+  { name: "Scale", detail: "Mark live, capture proof, and forge the next offer from HQ." },
 ];
 
 export const faqs = [
   {
-    q: "Is this just another course?",
-    a: "No. You get training plus the AI tools, distribution software, community, and live support in one system.",
+    q: "Is Emonphenom a public course?",
+    a: "No. It is a private HQ for Abdulla Alnassai to create and sell AI digital products professionally.",
   },
   {
-    q: "Do I need to show my face or create content?",
-    a: "No. Meridian is built for faceless digital products — no personal brand required to start.",
+    q: "Do I need a Render account?",
+    a: "No. The official site runs on GitHub Pages and updates automatically on every push.",
   },
   {
-    q: "What if I’m not technical?",
-    a: "Forge AI and Copyforge OS handle the heavy lifting. You follow the formula and ship.",
+    q: "What does the forge produce?",
+    a: "Research, product deliverable, sales page, partner distribution plan, and a launch checklist.",
   },
   {
-    q: "Do I need money for ads?",
-    a: "Not to validate. Signal Kit focuses on partnerships and existing audiences before paid ads.",
-  },
-  {
-    q: "What if I don’t have much time?",
-    a: "The system is designed around focused sessions. Many members build around a job or studies.",
-  },
-  {
-    q: "What’s the guarantee?",
-    a: "7-day change-of-mind refund. Plus our work-with-you-until-you-win support extension terms.",
+    q: "Is this affiliated with monetise.com?",
+    a: "No. Emonphenom is an original private company system inspired by that category of digital-product HQs.",
   },
 ];
 
 export const testimonials = [
-  {
-    name: "Donna R.",
-    text: "The coaching and tools are stacked. I finally stopped collecting courses and shipped a real product.",
-  },
-  {
-    name: "Geordie K.",
-    text: "First-class mentors and members. The community alone is worth the seat.",
-  },
-  {
-    name: "Milla C.",
-    text: "This turns knowledge into something you can actually monetize — clear next steps every week.",
-  },
-  {
-    name: "Rasmus N.",
-    text: "Support answered every stuck moment. I launched in under 30 days.",
-  },
-  {
-    name: "Julia G.",
-    text: "Great product, top support — best money I spent on my business this year.",
-  },
-  {
-    name: "Todd B.",
-    text: "Training videos, next-level tools, and a team that treats you like a partner.",
-  },
+  { name: "Ops standard", text: "Treat every offer like a product company: research, build, page, partners, launch." },
+  { name: "Faceless first", text: "No audience required to start — distribution runs through partners and warm lists." },
+  { name: "One HQ", text: "Stop stitching ten tools. Forge, store, and ship from Emonphenom." },
 ];
 
 export const platformFeatures = [
-  {
-    title: "Product studio",
-    body: "Research niches, outline offers, and generate deliverables without hopping between ten tools.",
-  },
-  {
-    title: "Sales page writer",
-    body: "Turn a product brief into a conversion-ready page, emails, and launch copy in minutes.",
-  },
-  {
-    title: "Distribution engine",
-    body: "Find creators and communities already sitting on the buyers you need.",
-  },
-  {
-    title: "Member hub",
-    body: "Courses, community, Q&A calendar, and progress tracking in one login.",
-  },
-  {
-    title: "Payments & delivery",
-    body: "Connect your storefront, deliver files, and track sales from a single dashboard.",
-  },
-  {
-    title: "Success ops",
-    body: "Onboarding calls, reviews, and escalation when you’re stuck past day 60.",
-  },
-];
-
-export const pricingTiers = [
-  {
-    name: "Waitlist",
-    price: "Free",
-    period: "",
-    cta: "Join waitlist",
-    href: "/waitlist",
-    highlight: false,
-    features: ["Early access alerts", "Launch calendar", "Founder updates"],
-  },
-  {
-    name: "Meridian Core",
-    price: "$1,995",
-    period: "one-time enrollment",
-    cta: "Get on the list",
-    href: "/waitlist",
-    highlight: true,
-    features: [
-      "Forge AI (12 months)",
-      "Digital Product Formula",
-      "Signal Kit + 100 leads",
-      "Copyforge OS (12 months)",
-      "Community + weekly Q&A",
-      "Launch Insurance",
-    ],
-  },
-  {
-    name: "Teams",
-    price: "Custom",
-    period: "for agencies & cohorts",
-    cta: "Talk to sales",
-    href: "/contact",
-    highlight: false,
-    features: ["Multi-seat access", "Private onboarding", "Shared playbooks", "Priority support"],
-  },
+  { title: "Product studio", body: "Research niches, outline offers, generate deliverables." },
+  { title: "Sales writer", body: "Pages and emails that match digital-product conversion patterns." },
+  { title: "Distribution desk", body: "Partner leads and weekly outreach plans." },
+  { title: "Owner hub", body: "Pipeline, statuses, and launch packs in one login." },
+  { title: "Storefront ready", body: "Export markdown packs into Whop/Gumroad/Notion delivery." },
+  { title: "Self-updating site", body: "Official GitHub Pages link rebuilds on every update." },
 ];
 
 export const blogPosts = [
   {
-    slug: "four-step-formula",
-    title: "The four-step formula behind digital products that sell",
-    excerpt: "Develop, Distribute, Deliver, Scale — and why skipping any one step kills momentum.",
-    date: "2026-08-12",
+    slug: "four-step-hq",
+    title: "The four-step HQ procedure behind products that sell",
+    excerpt: "Develop, Distribute, Deliver, Scale — and why skipping any step kills momentum.",
+    date: "2026-09-19",
   },
   {
-    slug: "faceless-offers",
-    title: "How faceless offers beat personal brands for beginners",
-    excerpt: "You don’t need an audience on day one. You need a sharp product and distribution.",
-    date: "2026-07-28",
+    slug: "faceless-ai-offers",
+    title: "Faceless AI offers beat personal brands for operators",
+    excerpt: "You need a sharp product and distribution — not a face on camera.",
+    date: "2026-09-12",
   },
   {
-    slug: "ai-product-studio",
-    title: "Inside the AI product studio members use weekly",
-    excerpt: "A walkthrough of niche research, asset generation, and shipping in one afternoon.",
-    date: "2026-07-04",
+    slug: "partner-first",
+    title: "Partner-first distribution before paid ads",
+    excerpt: "Validate with 10 pitches before you spend a dollar on traffic.",
+    date: "2026-09-05",
   },
 ];
 
 export const careers = [
   {
-    role: "Success Coach",
-    loc: "Remote · Full-time",
-    blurb: "Guide builders from onboarding through first sale with calls and async reviews.",
-  },
-  {
-    role: "Product Designer",
-    loc: "Remote · Full-time",
-    blurb: "Shape Meridian’s member hub, AI studio UX, and conversion surfaces.",
-  },
-  {
-    role: "Growth Engineer",
-    loc: "Remote · Full-time",
-    blurb: "Own waitlist, attribution, and experiment loops across the funnel.",
+    role: "Owner-operated",
+    loc: "Private HQ",
+    blurb: "Emonphenom is run by Abdulla Alnassai. External hiring opens later.",
   },
 ];

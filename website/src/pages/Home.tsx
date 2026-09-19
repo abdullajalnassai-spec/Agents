@@ -1,13 +1,5 @@
 import { Link } from "react-router-dom";
-import {
-  bonuses,
-  brand,
-  faqs,
-  offers,
-  stats,
-  stories,
-  testimonials,
-} from "../data/content";
+import { bonuses, brand, faqs, offers, stats, stories, testimonials } from "../data/content";
 import "./Home.css";
 
 export function Home() {
@@ -18,40 +10,40 @@ export function Home() {
           <div className="hero-glow" />
           <div className="hero-panel rise">
             <div className="hero-panel-top">
-              <span>Forge AI</span>
-              <span className="live-dot">Live studio</span>
+              <span>Product Forge</span>
+              <span className="live-dot">HQ live</span>
             </div>
             <div className="hero-panel-body">
-              <p className="hero-panel-kicker">Niche scan complete</p>
-              <h3>Remote ops playbook</h3>
+              <p className="hero-panel-kicker">Procedure locked</p>
+              <h3>Develop → Scale</h3>
               <ul>
-                <li>Buyer demand: high</li>
-                <li>Competition gap: open</li>
-                <li>Assets: 14 generated</li>
+                <li>Research niche</li>
+                <li>Build product pack</li>
+                <li>Write sales + distribute</li>
               </ul>
               <div className="hero-progress">
-                <span style={{ width: "78%" }} />
+                <span style={{ width: "86%" }} />
               </div>
             </div>
           </div>
         </div>
         <div className="shell hero-copy">
-          <p className="eyebrow rise">Digital product system</p>
+          <p className="eyebrow rise">AI digital product HQ</p>
           <h1 className="rise rise-delay-1">
             <span className="brand-hero">{brand.name}</span>
-            <span className="hero-line">builds the business.</span>
-            <span className="hero-line soft">You ship the product.</span>
+            <span className="hero-line">creates the product.</span>
+            <span className="hero-line soft">You sell it.</span>
           </h1>
           <p className="hero-support rise rise-delay-2">
-            AI product creation for <strong style={{ color: "inherit" }}>Abdulla Alnassai</strong> —
-            research, build, sales copy, distribution, and launch packs in one private company OS.
+            Private headquarters for {brand.owner} to research, forge, and sell faceless AI digital
+            products — the full professional procedure from niche to launch.
           </p>
           <div className="hero-cta rise rise-delay-3">
             <Link to="/owner" className="btn btn-lime">
-              Owner studio
+              Enter HQ
             </Link>
             <Link to="/studio/forge" className="btn btn-ghost">
-              Open AI forge
+              Open product forge
             </Link>
           </div>
         </div>
@@ -68,9 +60,9 @@ export function Home() {
 
       <section className="section shell">
         <div className="section-head">
-          <p className="eyebrow">It works wherever you are</p>
-          <h2>Builders with different lives. Same system.</h2>
-          <p>No face. No follower count. No quitting your day job on day one.</p>
+          <p className="eyebrow">The procedure</p>
+          <h2>Same operating loop elite digital-product HQs run</h2>
+          <p>Develop. Distribute. Deliver. Scale. Every forge run produces the full pack.</p>
         </div>
         <div className="story-grid">
           {stories.map((story) => (
@@ -85,9 +77,9 @@ export function Home() {
       <section className="section offers-band">
         <div className="shell">
           <div className="section-head">
-            <p className="eyebrow">Inside Meridian</p>
-            <h2>Everything you get in one enrollment</h2>
-            <p>Software, training, leads, and a safety net — packaged like an operating company, not a lonely course.</p>
+            <p className="eyebrow">Inside the HQ</p>
+            <h2>Everything required to create and sell</h2>
+            <p>Forge, sales engine, distribution desk, and launch ops — one private system.</p>
           </div>
           <div className="offer-list">
             {offers.map((offer, index) => (
@@ -113,8 +105,8 @@ export function Home() {
 
       <section className="section shell">
         <div className="section-head">
-          <p className="eyebrow">Bonuses</p>
-          <h2>Plus the operating layer most programs skip</h2>
+          <p className="eyebrow">Operating layer</p>
+          <h2>Built for shipping, not collecting courses</h2>
         </div>
         <div className="bonus-grid">
           {bonuses.map((bonus) => (
@@ -128,22 +120,22 @@ export function Home() {
 
       <section className="section guarantee">
         <div className="shell guarantee-inner">
-          <p className="eyebrow">Guarantee</p>
-          <h2>Work with you until you win</h2>
+          <p className="eyebrow">Owner HQ</p>
+          <h2>Private. Professional. Self-updating.</h2>
           <p>
-            Either you multiply your investment with the system, or we keep consulting and updating
-            with you under the published support terms. Plus 7 days to change your mind.
+            Official site deploys from GitHub on every update. Only {brand.owner} can access the forge
+            and ops desk.
           </p>
-          <Link to="/checkout" className="btn btn-primary">
-            Enroll now
+          <Link to="/owner" className="btn btn-primary">
+            Sign in to HQ
           </Link>
         </div>
       </section>
 
       <section className="section shell">
         <div className="section-head">
-          <p className="eyebrow">Social proof</p>
-          <h2>What members say after they ship</h2>
+          <p className="eyebrow">Standards</p>
+          <h2>How Emonphenom ships offers</h2>
         </div>
         <div className="testimonial-grid">
           {testimonials.map((item) => (
@@ -158,7 +150,7 @@ export function Home() {
       <section className="section shell faq">
         <div className="section-head">
           <p className="eyebrow">FAQ</p>
-          <h2>Straight answers before you join</h2>
+          <h2>Straight answers</h2>
         </div>
         <div className="faq-list">
           {faqs.map((item) => (
@@ -172,11 +164,11 @@ export function Home() {
 
       <section className="shell final-cta">
         <div>
-          <h2>Ready when enrollment opens</h2>
-          <p>Join the waitlist for launch access, onboarding slots, and founder updates.</p>
+          <h2>Open the headquarters</h2>
+          <p>Forge the next AI digital product and move it to live sale.</p>
         </div>
-        <Link to="/checkout" className="btn btn-lime">
-          Enroll now
+        <Link to="/studio/forge" className="btn btn-lime">
+          Start forge
         </Link>
       </section>
     </div>

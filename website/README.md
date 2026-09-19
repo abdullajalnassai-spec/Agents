@@ -1,39 +1,35 @@
-# Meridian — private AI digital product company (Abdulla Alnassai)
+# Emonphenom HQ
 
-Owner-only company OS: **Develop → Distribute → Deliver → Scale**
+Private headquarters that **creates and sells AI digital products** — full professional procedure
+(Develop → Distribute → Deliver → Scale).
 
-## One-click deploy on Render
+**Official link:** https://abdullajalnassai-spec.github.io/Agents/
 
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/abdullajalnassai-spec/Agents/tree/cursor/meridian-company-website-10e0)
-
-1. Click the button (sign in with GitHub if asked)
-2. Click **Apply**
-3. Wait for deploy → open your `*.onrender.com` URL
-4. Go to `/owner` and sign in
-
-**Owner login after Render deploy**
+## Owner access
 
 - Email: `abdulla.j.alnassai@gmail.com`
-- Password: `MeridianOwner2026!`
+- Password: `EmonphenomHQ2026!`
 
-## Local run
+Open `/owner` → HQ → **Forge a new product**.
+
+## What the forge does
+
+1. Niche research + opportunity score  
+2. Product deliverable pack  
+3. Sales page + emails  
+4. Partner distribution plan  
+5. Launch checklist + export  
+
+## Self-updating
+
+GitHub Actions deploys this site to GitHub Pages on every push and runs a weekly rebuild/self-check.
+No Render account required.
+
+## Local
 
 ```bash
 cd website
 npm install
-npm run build
-OWNER_PASSWORD='MeridianOwner2026!' npm start
+VITE_BASE=/ npm run build
+VITE_BASE=/ npm run dev
 ```
-
-Open `/owner` → Studio → Forge.
-
-## What operates
-
-| Area | Route |
-|------|--------|
-| Owner login | `/owner` |
-| Studio pipeline | `/studio` |
-| AI product forge | `/studio/forge` |
-| Ops admin | `/admin` |
-
-Public checkout is closed. Only the owner can forge products.

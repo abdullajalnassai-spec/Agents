@@ -4,7 +4,7 @@ import "./Nav.css";
 
 const links = [
   { to: "/platform", label: "Platform" },
-  { to: "/studio", label: "Studio" },
+  { to: "/studio", label: "HQ" },
   { to: "/about", label: "Company" },
   { to: "/blog", label: "Journal" },
   { to: "/contact", label: "Contact" },

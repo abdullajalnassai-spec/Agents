@@ -25,9 +25,9 @@ export function Admin() {
       <section className="shell page-hero">
         <p className="eyebrow">Ops</p>
         <h1>Company command center</h1>
-        <p>Owner-only view of waitlist, orders, and forged products.</p>
+        <p>Owner-only view of forged products and HQ activity.</p>
         <Link to="/studio" className="btn btn-ghost" style={{ width: "fit-content", marginTop: "1rem" }}>
-          Back to studio
+          Back to HQ
         </Link>
       </section>
 
@@ -37,12 +37,12 @@ export function Admin() {
         <>
           <section className="shell proof-bar four" style={{ marginTop: 0 }}>
             <div>
-              <strong>{summary.counts.waitlist}</strong>
-              <span>Waitlist</span>
-            </div>
-            <div>
               <strong>{summary.counts.products || 0}</strong>
               <span>Products</span>
+            </div>
+            <div>
+              <strong>{summary.counts.members}</strong>
+              <span>Owners</span>
             </div>
             <div>
               <strong>{summary.counts.orders}</strong>
@@ -59,13 +59,13 @@ export function Admin() {
               <h2>Recent products</h2>
               <div className="product-list">
                 {(summary.recentProducts || []).map((row) => (
-                  <div key={String(row.id)} className="product-row">
+                  <Link key={String(row.id)} to={`/studio/products/${String(row.id)}`} className="product-row">
                     <div>
                       <strong>{String(row.title)}</strong>
                       <span>{String(row.niche)}</span>
                     </div>
                     <em>{String(row.status)}</em>
-                  </div>
+                  </Link>
                 ))}
                 {(summary.recentProducts || []).length === 0 ? (
                   <p className="muted">No forged products yet.</p>
@@ -73,18 +73,14 @@ export function Admin() {
               </div>
             </article>
             <article className="ops-panel">
-              <h2>Recent waitlist</h2>
-              <div className="product-list">
-                {summary.recentWaitlist.map((row) => (
-                  <div key={String(row.id)} className="product-row">
-                    <div>
-                      <strong>{String(row.name)}</strong>
-                      <span>{String(row.email)}</span>
-                    </div>
-                    <em>{String(row.goal)}</em>
-                  </div>
-                ))}
-              </div>
+              <h2>HQ status</h2>
+              <p className="muted">
+                Official site auto-deploys from GitHub on every update. Forge runs fully in your
+                browser — no Render account required.
+              </p>
+              <Link to="/studio/forge" className="btn btn-lime" style={{ marginTop: "1rem" }}>
+                Forge next offer
+              </Link>
             </article>
           </section>
         </>

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { brand, platformFeatures } from "../data/content";
 import "./SimplePages.css";
 
 export function About() {
@@ -6,10 +7,10 @@ export function About() {
     <div className="page simple-page">
       <section className="shell page-hero">
         <p className="eyebrow">Company</p>
-        <h1>Meridian exists to make digital product businesses operable.</h1>
+        <h1>{brand.name} is the HQ that creates and sells AI digital products.</h1>
         <p>
-          We build the AI studio, distribution tools, curriculum, and success ops that let
-          operators launch faceless offers without stitching together ten subscriptions.
+          Owned and operated by {brand.owner}. The system mirrors elite digital-product procedures:
+          research, forge, sales pages, partner distribution, and launch ops.
         </p>
       </section>
       <section className="shell content-block">
@@ -24,19 +25,14 @@ export function About() {
             <p>You shouldn’t need a personal brand to sell a useful digital product.</p>
           </article>
           <article>
-            <h3>Aligned incentives</h3>
-            <p>When members sell, the ecosystem grows — so support is part of the product.</p>
+            <h3>Owner-grade ops</h3>
+            <p>One private HQ. Full procedure. Products that can actually sell.</p>
           </article>
         </div>
       </section>
       <section className="shell content-block">
-        <h2>Leadership snapshot</h2>
-        <p>
-          Meridian is a product company: engineering, coaching, and growth under one roof.
-          Enrollment opens in cohorts so onboarding and support stay high-touch.
-        </p>
-        <Link to="/careers" className="btn btn-primary" style={{ marginTop: "1.25rem", width: "fit-content" }}>
-          See open roles
+        <Link to="/owner" className="btn btn-primary" style={{ width: "fit-content" }}>
+          Enter HQ
         </Link>
       </section>
     </div>
@@ -49,30 +45,23 @@ export function Platform() {
       <section className="shell page-hero">
         <p className="eyebrow">Platform</p>
         <h1>One hub for product, copy, distribution, and delivery.</h1>
-        <p>From niche research to first sale — without hopping across disconnected tools.</p>
+        <p>From niche research to first sale — the full monetise-style operating loop.</p>
       </section>
       <section className="shell feature-grid">
-        {[
-          ["Product studio", "Research niches, outline offers, generate assets."],
-          ["Copyforge OS", "Sales pages, emails, and launch copy on demand."],
-          ["Signal Kit", "Find partner audiences and work pre-vetted leads."],
-          ["Member hub", "Courses, community, calendar, and progress."],
-          ["Storefront sync", "Track delivery and sales from one dashboard."],
-          ["Success ops", "Onboarding, reviews, and escalation paths."],
-        ].map(([title, body]) => (
-          <article key={title}>
-            <h3>{title}</h3>
-            <p>{body}</p>
+        {platformFeatures.map((feature) => (
+          <article key={feature.title}>
+            <h3>{feature.title}</h3>
+            <p>{feature.body}</p>
           </article>
         ))}
       </section>
       <section className="shell content-block cta-strip">
         <div>
-          <h2>Tour it after you join the list</h2>
-          <p>Members get full studio access. Waitlist gets launch timing first.</p>
+          <h2>Run it from HQ</h2>
+          <p>Owner studio includes the forge and launch pipeline.</p>
         </div>
-        <Link to="/waitlist" className="btn btn-lime">
-          Join waitlist
+        <Link to="/studio/forge" className="btn btn-lime">
+          Open forge
         </Link>
       </section>
     </div>
@@ -83,61 +72,56 @@ export function Pricing() {
   return (
     <div className="page simple-page">
       <section className="shell page-hero">
-        <p className="eyebrow">Pricing</p>
-        <h1>Enrollment that feels like buying an operating system.</h1>
-        <p>Core includes the AI tools, formula, leads, community, and launch insurance.</p>
+        <p className="eyebrow">Access</p>
+        <h1>Private owner HQ — not a public enrollment offer.</h1>
+        <p>Emonphenom is built for {brand.owner} to create and sell products, not to sell seats.</p>
       </section>
       <section className="shell pricing-grid">
-        {[
-          {
-            name: "Waitlist",
-            price: "Free",
-            note: "Alerts + founder updates",
-            href: "/waitlist",
-            cta: "Join waitlist",
-            items: ["Launch calendar", "Early access", "Product changelog"],
-            hot: false,
-          },
-          {
-            name: "Meridian Core",
-            price: "$1,995",
-            note: "One-time enrollment",
-            href: "/checkout",
-            cta: "Checkout — $1,995",
-            items: [
-              "Forge AI · 12 months",
-              "Digital Product Formula",
-              "Signal Kit + 100 leads",
-              "Copyforge OS · 12 months",
-              "Community + weekly Q&A",
-              "Launch Insurance",
-            ],
-            hot: true,
-          },
-          {
-            name: "Teams",
-            price: "Custom",
-            note: "Agencies & cohorts",
-            href: "/contact",
-            cta: "Talk to sales",
-            items: ["Multi-seat access", "Private onboarding", "Shared playbooks", "Priority support"],
-            hot: false,
-          },
-        ].map((tier) => (
-          <article key={tier.name} className={tier.hot ? "hot" : undefined}>
-            <p className="eyebrow">{tier.name}</p>
-            <h2>{tier.price}</h2>
-            <p>{tier.note}</p>
-            <ul>
-              {tier.items.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-            <Link to={tier.href} className={`btn ${tier.hot ? "btn-lime" : "btn-primary"}`}>
-              {tier.cta}
-            </Link>
-          </article>
-        ))}
+        <article>
+          <p className="eyebrow">Public</p>
+          <h2>Closed</h2>
+          <p>No public checkout</p>
+          <ul>
+            <li>Marketing site</li>
+            <li>Company pages</li>
+            <li>Contact</li>
+          </ul>
+          <Link to="/contact" className="btn btn-ghost">
+            Contact
+          </Link>
+        </article>
+        <article className="hot">
+          <p className="eyebrow">Owner HQ</p>
+          <h2>Included</h2>
+          <p>Full forge + ops</p>
+          <ul>
+            <li>Product forge</li>
+            <li>Sales engine</li>
+            <li>Distribution desk</li>
+            <li>Launch pipeline</li>
+          </ul>
+          <Link to="/owner" className="btn btn-lime">
+            Owner sign in
+          </Link>
+        </article>
+        <article>
+          <p className="eyebrow">Official site</p>
+          <h2>GitHub</h2>
+          <p>Self-updating Pages</p>
+          <ul>
+            <li>Deploys on every push</li>
+            <li>Weekly health rebuild</li>
+            <li>No Render account</li>
+          </ul>
+          <a
+            className="btn btn-primary"
+            href="https://abdullajalnassai-spec.github.io/Agents/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Open official link
+          </a>
+        </article>
       </section>
     </div>
   );
