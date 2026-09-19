@@ -233,7 +233,12 @@ function StudioForgeInner() {
             </div>
             <div className="field">
               <label htmlFor="audience">Who is the buyer?</label>
-              <input id="audience" name="audience" placeholder="Busy freelancers who hate showing their face" />
+              <input
+                id="audience"
+                name="audience"
+                defaultValue="Faceless beginners who want results without a personal brand"
+                placeholder="Busy freelancers who hate showing their face"
+              />
             </div>
             <div className="field">
               <label htmlFor="productType">Product type</label>
