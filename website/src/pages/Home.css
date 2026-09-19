@@ -1,0 +1,356 @@
+.hero {
+  position: relative;
+  min-height: min(92vh, 920px);
+  display: grid;
+  align-items: end;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero-media {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(120deg, rgba(11, 31, 26, 0.88) 8%, rgba(11, 31, 26, 0.42) 48%, rgba(11, 31, 26, 0.2) 100%),
+    url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1800&q=80")
+      center / cover no-repeat;
+  z-index: -1;
+}
+
+.hero-glow {
+  position: absolute;
+  inset: auto -10% -20% 40%;
+  height: 55%;
+  background: radial-gradient(circle, rgba(232, 245, 109, 0.35), transparent 65%);
+  animation: pulse-line 4.5s ease-in-out infinite;
+}
+
+.hero-copy {
+  width: min(1120px, calc(100% - 2.5rem));
+  padding: 7.5rem 0 4.5rem;
+  color: #f4f8f3;
+}
+
+.hero-copy .eyebrow,
+.hero-copy .eyebrow::before {
+  color: var(--lime);
+  box-shadow: none;
+}
+
+.hero-copy .eyebrow::before {
+  background: var(--lime);
+  box-shadow: 0 0 0 4px rgba(232, 245, 109, 0.2);
+}
+
+.hero h1 {
+  display: grid;
+  gap: 0.2rem;
+  margin-top: 1rem;
+  font-size: clamp(3rem, 8vw, 6.2rem);
+  max-width: 12ch;
+}
+
+.brand-hero {
+  color: var(--lime);
+}
+
+.hero-line.soft {
+  color: rgba(244, 248, 243, 0.78);
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 0.72em;
+}
+
+.hero-support {
+  margin-top: 1.25rem;
+  max-width: 34rem;
+  color: rgba(244, 248, 243, 0.82);
+  font-size: 1.08rem;
+}
+
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.75rem;
+}
+
+.hero-cta .btn-ghost {
+  color: #f4f8f3;
+  border-color: rgba(244, 248, 243, 0.28);
+}
+
+.hero-panel {
+  position: absolute;
+  right: max(2rem, calc((100% - 1120px) / 2));
+  top: 22%;
+  width: min(320px, 42vw);
+  border-radius: 22px;
+  padding: 1.1rem;
+  background: rgba(247, 250, 246, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: var(--shadow);
+  color: var(--ink);
+  animation: drift 4s ease-in-out infinite alternate;
+}
+
+.hero-panel-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.live-dot {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--ink-soft);
+}
+
+.live-dot::before {
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: #2f9e6b;
+}
+
+.hero-panel-kicker {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.hero-panel h3 {
+  margin: 0.35rem 0 0.85rem;
+  font-size: 1.35rem;
+}
+
+.hero-panel ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
+  display: grid;
+  gap: 0.35rem;
+}
+
+.hero-progress {
+  margin-top: 1rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: var(--mist);
+  overflow: hidden;
+}
+
+.hero-progress span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--ink), var(--lime-deep));
+}
+
+.proof-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: -2rem;
+  position: relative;
+  padding: 1.4rem 1.5rem;
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.proof-bar strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  letter-spacing: -0.04em;
+}
+
+.proof-bar span {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.story-grid,
+.bonus-grid,
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.story-grid article,
+.bonus-grid article,
+.testimonial-grid blockquote,
+.offer-row,
+.faq-list details {
+  border-top: 1px solid var(--line);
+  padding: 1.35rem 0;
+}
+
+.story-grid h3,
+.bonus-grid h3 {
+  margin-bottom: 0.55rem;
+  font-size: 1.35rem;
+}
+
+.offers-band {
+  background:
+    linear-gradient(180deg, rgba(11, 31, 26, 0.04), transparent 30%),
+    rgba(255, 255, 255, 0.35);
+}
+
+.offer-list {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.offer-row {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr;
+  gap: 1rem;
+  padding: 1.6rem 0;
+}
+
+.offer-index {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  color: var(--ink-soft);
+}
+
+.offer-title-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: baseline;
+  margin-bottom: 0.55rem;
+}
+
+.offer-title-row span {
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.offer-row ul {
+  margin: 0.9rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
+  display: grid;
+  gap: 0.35rem;
+}
+
+.guarantee {
+  padding-inline: 1.25rem;
+}
+
+.guarantee-inner {
+  border-radius: 28px;
+  padding: clamp(2rem, 5vw, 3.5rem);
+  background:
+    radial-gradient(700px 280px at 100% 0%, rgba(232, 245, 109, 0.35), transparent 55%),
+    var(--ink);
+  color: #f4f8f3;
+}
+
+.guarantee-inner p {
+  color: rgba(244, 248, 243, 0.78);
+  max-width: 40rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.guarantee-inner .eyebrow,
+.guarantee-inner .eyebrow::before {
+  color: var(--lime);
+}
+
+.guarantee-inner .eyebrow::before {
+  background: var(--lime);
+  box-shadow: none;
+}
+
+.testimonial-grid blockquote p {
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  line-height: 1.35;
+  margin-bottom: 0.85rem;
+}
+
+.testimonial-grid footer {
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.faq-list {
+  display: grid;
+  gap: 0.2rem;
+  max-width: 48rem;
+}
+
+.faq-list summary {
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 650;
+  list-style: none;
+}
+
+.faq-list summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-list details p {
+  margin-top: 0.7rem;
+}
+
+.final-cta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  border-radius: 24px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.final-cta h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  margin-bottom: 0.4rem;
+}
+
+@media (max-width: 960px) {
+  .hero-panel {
+    display: none;
+  }
+
+  .hero h1 {
+    max-width: 14ch;
+  }
+}
+
+@media (max-width: 720px) {
+  .proof-bar,
+  .story-grid,
+  .bonus-grid,
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .offer-row {
+    grid-template-columns: 1fr;
+  }
+
+  .final-cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

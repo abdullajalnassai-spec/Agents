@@ -1,0 +1,171 @@
+.simple-page {
+  padding-top: 2rem;
+}
+
+.page-hero {
+  padding: 3rem 0 2rem;
+  max-width: 46rem;
+}
+
+.page-hero h1 {
+  margin: 0.85rem 0 1rem;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+}
+
+.content-block {
+  padding: 1rem 0 3rem;
+}
+
+.content-block h2 {
+  margin-bottom: 1rem;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+}
+
+.pillars,
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.pillars article,
+.feature-grid article {
+  padding: 1.35rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.pillars h3,
+.feature-grid h3 {
+  margin-bottom: 0.5rem;
+}
+
+.cta-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 0 0;
+  border-top: 1px solid var(--line);
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  padding-bottom: 2rem;
+}
+
+.pricing-grid article {
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.65);
+  display: grid;
+  gap: 0.85rem;
+  align-content: start;
+}
+
+.pricing-grid article.hot {
+  background: var(--ink);
+  color: #f4f8f3;
+  border-color: transparent;
+}
+
+.pricing-grid article.hot p,
+.pricing-grid article.hot li {
+  color: rgba(244, 248, 243, 0.78);
+}
+
+.pricing-grid article.hot .eyebrow,
+.pricing-grid article.hot .eyebrow::before {
+  color: var(--lime);
+}
+
+.pricing-grid article.hot .eyebrow::before {
+  background: var(--lime);
+  box-shadow: none;
+}
+
+.pricing-grid h2 {
+  font-size: 2.4rem;
+}
+
+.pricing-grid ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.4rem;
+  color: var(--muted);
+}
+
+.blog-list,
+.career-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.blog-list article,
+.career-list article {
+  padding: 1.4rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.blog-list time {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.blog-list h2,
+.career-list h2 {
+  margin: 0.35rem 0 0.55rem;
+  font-size: 1.6rem;
+}
+
+.career-list article {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.career-meta {
+  display: grid;
+  gap: 0.75rem;
+  justify-items: end;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.legal {
+  max-width: 44rem;
+  padding: 3rem 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.legal h1 {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+}
+
+.narrow {
+  max-width: 32rem;
+  padding: 3rem 0;
+}
+
+@media (max-width: 900px) {
+  .pillars,
+  .feature-grid,
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-strip,
+  .career-list article {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .career-meta {
+    justify-items: start;
+  }
+}
