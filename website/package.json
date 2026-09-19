@@ -3,6 +3,9 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "dev": "concurrently -k \"npm:dev:api\" \"npm:dev:web\"",
     "dev:web": "vite",
@@ -10,7 +13,8 @@
     "build": "tsc -b && vite build",
     "start": "node server/index.js",
     "preview": "vite preview",
-    "lint": "tsc -b --pretty false"
+    "lint": "tsc -b --pretty false",
+    "demo:owner": "node scripts/demo-owner.mjs"
   },
   "dependencies": {
     "concurrently": "^10.0.5",

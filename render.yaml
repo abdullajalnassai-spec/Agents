@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: meridian-company
+    runtime: node
+    plan: free
+    region: oregon
+    branch: cursor/meridian-company-website-10e0
+    rootDir: website
+    buildCommand: NPM_CONFIG_PRODUCTION=false npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeployTrigger: commit
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: NODE_ENV
+        value: production
+      - key: OWNER_EMAIL
+        value: abdulla.j.alnassai@gmail.com
+      - key: OWNER_NAME
+        value: Abdulla Alnassai
+      - key: OWNER_PASSWORD
+        value: MeridianOwner2026!

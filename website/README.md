@@ -1,62 +1,39 @@
 # Meridian — private AI digital product company (Abdulla Alnassai)
 
-Owner-only company OS that runs the faceless digital-product procedure:
+Owner-only company OS: **Develop → Distribute → Deliver → Scale**
 
-**Develop → Distribute → Deliver → Scale**
+## One-click deploy on Render
 
-## Owner access
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/abdullajalnassai-spec/Agents/tree/cursor/meridian-company-website-10e0)
 
-Only `abdulla.j.alnassai@gmail.com` can sign in.
+1. Click the button (sign in with GitHub if asked)
+2. Click **Apply**
+3. Wait for deploy → open your `*.onrender.com` URL
+4. Go to `/owner` and sign in
+
+**Owner login after Render deploy**
+
+- Email: `abdulla.j.alnassai@gmail.com`
+- Password: `MeridianOwner2026!`
+
+## Local run
 
 ```bash
 cd website
 npm install
 npm run build
-npm start
+OWNER_PASSWORD='MeridianOwner2026!' npm start
 ```
 
-Open `/owner`, sign in, then use **Studio → Forge**.
+Open `/owner` → Studio → Forge.
 
-Set a permanent password with:
+## What operates
 
-```bash
-OWNER_EMAIL=abdulla.j.alnassai@gmail.com
-OWNER_PASSWORD='your-strong-password'
-OWNER_NAME='Abdulla Alnassai'
-```
+| Area | Route |
+|------|--------|
+| Owner login | `/owner` |
+| Studio pipeline | `/studio` |
+| AI product forge | `/studio/forge` |
+| Ops admin | `/admin` |
 
-On first boot without `OWNER_PASSWORD`, a one-time password is printed in the server logs and saved locally in `data/owner-credentials.json` (gitignored).
-
-## Product forge procedure
-
-1. Enter niche / topic + audience + product type
-2. Meridian generates:
-   - Niche research + opportunity score
-   - Full product deliverable pack
-   - Sales page + emails
-   - Partner distribution leads + weekly plan
-   - Launch checklist + export markdown
-3. Save in pipeline → mark **Live** when storefront is ready
-
-## Notion HQ
-
-Private Notion drafts are created for company HQ + forge skill (see agent summary links).
-
-## API highlights
-
-- `POST /api/owner/login`
-- `POST /api/forge/run` (owner token required)
-- `GET /api/products` (owner token required)
-- `GET /api/admin/summary` (owner token required)
-- Public checkout is **closed**
-
-## Deploy
-
-```bash
-docker build -t meridian .
-docker run -p 8787:8787 \
-  -e OWNER_EMAIL=abdulla.j.alnassai@gmail.com \
-  -e OWNER_PASSWORD='...' \
-  -e APP_URL=https://your-domain.com \
-  meridian
-```
+Public checkout is closed. Only the owner can forge products.
