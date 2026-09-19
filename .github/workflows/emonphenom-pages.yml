@@ -1,0 +1,53 @@
+name: Deploy Emonphenom HQ
+
+on:
+  push:
+    branches: [cursor/meridian-company-website-10e0, main, claude/agency-agents-repo-49vdhc]
+    paths:
+      - "website/**"
+      - ".github/workflows/**"
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: emonphenom-deploy
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: website
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: website/package-lock.json
+      - run: npm ci --no-audit --no-fund
+      - name: Self-check forge
+        run: node scripts/selfcheck.mjs
+      - name: Build static HQ
+        run: npm run build
+        env:
+          VITE_BASE: ./
+      - name: Prepare publish folder
+        run: |
+          rm -rf publish && mkdir -p publish
+          cp -r dist/* publish/
+          cp dist/index.html publish/404.html
+      - name: Deploy to gh-pages (self-updating)
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: website/publish
+          publish_branch: gh-pages
+          force_orphan: true
+          user_name: Emonphenom Bot
+          user_email: abdulla.j.alnassai@gmail.com
