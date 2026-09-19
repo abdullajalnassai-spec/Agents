@@ -1,35 +1,30 @@
 # Emonphenom HQ
 
-Private headquarters that **creates and sells AI digital products** — full professional procedure
-(Develop → Distribute → Deliver → Scale).
+Private headquarters that **creates and sells AI digital products**.
+Full procedure: Develop → Distribute → Deliver → Scale.
 
-**Official link:** https://abdullajalnassai-spec.github.io/Agents/
+## Official site (self-updating)
 
-## Owner access
+The site auto-deploys to the `gh-pages` branch on **every push** (+ weekly rebuild).
+
+**After one GitHub toggle** (Settings → Pages → Branch: `gh-pages` → Save):
+
+https://abdullajalnassai-spec.github.io/Agents/#/owner
+
+That is your permanent official link. No Render account.
+
+## Owner login
 
 - Email: `abdulla.j.alnassai@gmail.com`
 - Password: `EmonphenomHQ2026!`
 
-Open `/owner` → HQ → **Forge a new product**.
+## Full process in HQ
 
-## What the forge does
+1. `/#/owner` sign in  
+2. `/#/studio/forge` run forge  
+3. Get research → product pack → sales page → distribution → launch checklist  
+4. Mark product **Live** and sell  
 
-1. Niche research + opportunity score  
-2. Product deliverable pack  
-3. Sales page + emails  
-4. Partner distribution plan  
-5. Launch checklist + export  
+## Notion
 
-## Self-updating
-
-GitHub Actions deploys this site to GitHub Pages on every push and runs a weekly rebuild/self-check.
-No Render account required.
-
-## Local
-
-```bash
-cd website
-npm install
-VITE_BASE=/ npm run build
-VITE_BASE=/ npm run dev
-```
+Private operating page created for Emonphenom HQ in your Notion drafts.
