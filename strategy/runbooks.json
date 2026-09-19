@@ -170,6 +170,59 @@
           ]
         }
       ]
+    },
+    {
+      "slug": "50-dollar-survival",
+      "title": "$50 Survival Strike Team",
+      "mode": "NEXUS-Micro",
+      "duration": "72 hours",
+      "summary": "Micro-bankroll survival across every legal channel at once: emergency aid, stopping cash bleed, selling assets, same-day gigs, bounties, and AI-built remote services — trading only as a capped, gated sleeve last.",
+      "doc": "strategy/runbooks/scenario-50-dollar-survival.md",
+      "roster": [
+        {
+          "group": "Command",
+          "activation": "always",
+          "agents": [
+            "survival-mission-commander",
+            "finance-survival-capital-allocator",
+            "testing-reality-checker"
+          ]
+        },
+        {
+          "group": "Money Out",
+          "activation": "hour 0-3",
+          "agents": [
+            "emergency-resources-navigator",
+            "finance-cash-bleed-stopper"
+          ]
+        },
+        {
+          "group": "Money In",
+          "activation": "hour 1-72",
+          "agents": [
+            "asset-liquidation-flipper",
+            "same-day-cash-operator",
+            "bounty-referral-hunter",
+            "ai-leverage-service-builder",
+            "sales-speed-closer"
+          ]
+        },
+        {
+          "group": "Markets Sleeve",
+          "activation": "floor cleared only",
+          "agents": [
+            "finance-micro-trading-risk-officer"
+          ]
+        },
+        {
+          "group": "Stabilize",
+          "activation": "day 3+",
+          "agents": [
+            "marketing-growth-hacker",
+            "agents-orchestrator"
+          ]
+        }
+      ]
     }
   ]
 }

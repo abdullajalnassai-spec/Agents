@@ -10,6 +10,16 @@ These examples answer the question: *"What does it actually look like when the f
 
 ## Contents
 
+### [workflow-50-dollar-survival.md](./workflow-50-dollar-survival.md)
+
+**What:** A 72-hour, 12-agent strike team for surviving and earning with a ~$50 bankroll across every legal channel at once.
+
+**The scenario:** You need cash fast. The Commander runs a safety screen and intake, then launches parallel lanes: emergency aid and crisis lines, stopping cash bleed (cancel charges, recover refunds, defer bills), selling owned assets, same-day gigs, paid studies/bounties, and AI-built remote services sold by a speed closer. A trading/scalping sleeve opens only if food/shelter are secure — usually NO-GO or paper-only under $200.
+
+**Agents used:** Survival Mission Commander, Survival Capital Allocator, Emergency Resources Navigator, Cash Bleed Stopper, Asset Liquidation Flipper, Same-Day Cash Operator, Bounty & Referral Hunter, AI Leverage Service Builder, Speed Offer Closer, Micro-Trading Risk Officer, Reality Checker, Growth Hacker (Day 3+).
+
+**Also see:** [strategy/runbooks/scenario-50-dollar-survival.md](../strategy/runbooks/scenario-50-dollar-survival.md) (NEXUS runbook + `runbooks.json` roster).
+
 ### [nexus-spatial-discovery.md](./nexus-spatial-discovery.md)
 
 **What:** A complete product discovery exercise where 8 agents worked in parallel to evaluate a software opportunity and produce a unified plan.
