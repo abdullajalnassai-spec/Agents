@@ -6,6 +6,8 @@
 
 You have about **$50**, hard deadlines, and you need money as fast as possible. You'll do gigs, freelancing, selling, bounties — anything legal. You also can't afford to lose the last cash to fees, a scam, or a revenge trade.
 
+> **Shortcut:** no install needed — paste [strategy/runbooks/scenario-50-dollar-survival-one-paste.md](../strategy/runbooks/scenario-50-dollar-survival-one-paste.md) into any AI chat and answer six questions.
+
 ## Agent Team
 
 | Agent | Role in this workflow |
