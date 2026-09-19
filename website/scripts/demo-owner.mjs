@@ -10,7 +10,7 @@ const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
 
 await page.goto(`${base}/owner`);
 await page.fill("#email", "abdulla.j.alnassai@gmail.com");
-await page.fill("#password", "dKfnMziTvCH0");
+await page.fill("#password", "MeridianOwner2026!");
 await page.click('button[type="submit"]');
 await page.waitForURL("**/studio");
 await page.screenshot({ path: `${out}/meridian_owner_studio.png`, fullPage: true });
