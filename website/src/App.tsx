@@ -12,6 +12,7 @@ import {
   Terms,
   Waitlist,
 } from "./pages/OpsPages";
+import { DocsArticle, DocsIndex, DocsNotes } from "./pages/Docs";
 import { OwnerLogin, StudioForge, StudioHome, StudioProduct } from "./pages/Studio";
 
 export default function App() {
@@ -22,6 +23,9 @@ export default function App() {
         <Route path="platform" element={<Platform />} />
         <Route path="pricing" element={<Pricing />} />
         <Route path="about" element={<About />} />
+        <Route path="docs" element={<DocsIndex />} />
+        <Route path="docs/notes" element={<DocsNotes />} />
+        <Route path="docs/:slug" element={<DocsArticle />} />
         <Route path="waitlist" element={<Waitlist />} />
         <Route path="checkout" element={<Checkout />} />
         <Route path="checkout/success" element={<CheckoutSuccess />} />

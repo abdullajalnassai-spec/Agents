@@ -144,6 +144,9 @@ function StudioHomeInner() {
         <Link to="/studio/forge" className="btn btn-lime">
           Forge a new product
         </Link>
+        <Link to="/docs" className="btn btn-ghost">
+          HQ docs
+        </Link>
         <Link to="/admin" className="btn btn-ghost">
           Ops admin
         </Link>

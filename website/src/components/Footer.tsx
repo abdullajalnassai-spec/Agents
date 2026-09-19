@@ -21,6 +21,7 @@ export function Footer() {
           <Link to="/platform">Platform</Link>
           <Link to="/studio">HQ studio</Link>
           <Link to="/studio/forge">Forge</Link>
+          <Link to="/docs">Docs</Link>
           <Link to="/admin">Ops admin</Link>
         </div>
         <div>

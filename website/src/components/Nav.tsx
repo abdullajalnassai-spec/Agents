@@ -5,8 +5,8 @@ import "./Nav.css";
 const links = [
   { to: "/platform", label: "Platform" },
   { to: "/studio", label: "HQ" },
+  { to: "/docs", label: "Docs" },
   { to: "/about", label: "Company" },
-  { to: "/blog", label: "Journal" },
   { to: "/contact", label: "Contact" },
 ];
 
