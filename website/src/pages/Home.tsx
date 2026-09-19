@@ -43,15 +43,15 @@ export function Home() {
             <span className="hero-line soft">You ship the product.</span>
           </h1>
           <p className="hero-support rise rise-delay-2">
-            AI product creation, distribution software, training, community, and a success team —
-            so you can launch a faceless digital offer without an audience or ad budget.
+            AI product creation for <strong style={{ color: "inherit" }}>Abdulla Alnassai</strong> —
+            research, build, sales copy, distribution, and launch packs in one private company OS.
           </p>
           <div className="hero-cta rise rise-delay-3">
-            <Link to="/checkout" className="btn btn-lime">
-              Enroll now — $1,995
+            <Link to="/owner" className="btn btn-lime">
+              Owner studio
             </Link>
-            <Link to="/waitlist" className="btn btn-ghost">
-              Join the waitlist
+            <Link to="/studio/forge" className="btn btn-ghost">
+              Open AI forge
             </Link>
           </div>
         </div>

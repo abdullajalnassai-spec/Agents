@@ -8,12 +8,11 @@ import {
   Blog,
   Careers,
   Contact,
-  Dashboard,
-  Login,
   Privacy,
   Terms,
   Waitlist,
 } from "./pages/OpsPages";
+import { OwnerLogin, StudioForge, StudioHome, StudioProduct } from "./pages/Studio";
 
 export default function App() {
   return (
@@ -27,8 +26,12 @@ export default function App() {
         <Route path="checkout" element={<Checkout />} />
         <Route path="checkout/success" element={<CheckoutSuccess />} />
         <Route path="contact" element={<Contact />} />
-        <Route path="login" element={<Login />} />
-        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="login" element={<Navigate to="/owner" replace />} />
+        <Route path="dashboard" element={<Navigate to="/studio" replace />} />
+        <Route path="owner" element={<OwnerLogin />} />
+        <Route path="studio" element={<StudioHome />} />
+        <Route path="studio/forge" element={<StudioForge />} />
+        <Route path="studio/products/:id" element={<StudioProduct />} />
         <Route path="admin" element={<Admin />} />
         <Route path="blog" element={<Blog />} />
         <Route path="careers" element={<Careers />} />

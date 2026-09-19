@@ -1,8 +1,9 @@
 export const brand = {
   name: "Meridian",
-  tagline: "Let AI build you a profitable digital product business",
-  supportEmail: "support@meridian.example",
+  tagline: "Abdulla Alnassai’s private AI digital product company",
+  supportEmail: "abdulla.j.alnassai@gmail.com",
   whatsapp: "+1 555 010 2290",
+  owner: "Abdulla Alnassai",
 };
 
 export const stats = [

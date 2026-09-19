@@ -4,7 +4,7 @@ import "./Nav.css";
 
 const links = [
   { to: "/platform", label: "Platform" },
-  { to: "/pricing", label: "Pricing" },
+  { to: "/studio", label: "Studio" },
   { to: "/about", label: "Company" },
   { to: "/blog", label: "Journal" },
   { to: "/contact", label: "Contact" },
@@ -26,11 +26,11 @@ export function Nav() {
           ))}
         </nav>
         <div className="nav-actions">
-          <Link to="/login" className="nav-login">
-            Member login
+          <Link to="/owner" className="nav-login">
+            Owner login
           </Link>
-          <Link to="/checkout" className="btn btn-primary nav-cta">
-            Enroll now
+          <Link to="/studio/forge" className="btn btn-primary nav-cta">
+            Open forge
           </Link>
         </div>
       </div>

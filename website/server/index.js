@@ -4,7 +4,24 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import Stripe from "stripe";
+import {
+  ensureOwner,
+  getSessionUser,
+  loginOwner,
+  logoutOwner,
+  OWNER_EMAIL,
+  OWNER_NAME,
+  requireOwner,
+} from "./auth.js";
 import { db, initDb } from "./db.js";
+import {
+  buildDistribution,
+  buildProduct,
+  researchNiche,
+  runFullForge,
+  writeSalesPage,
+  buildLaunchPack,
+} from "./forge.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
@@ -13,25 +30,62 @@ const port = Number(process.env.PORT || 8787);
 const appUrl = process.env.APP_URL || `http://127.0.0.1:${port}`;
 
 initDb();
+const ownerInfo = ensureOwner();
 
 const stripeKey = process.env.STRIPE_SECRET_KEY || "";
 const stripe = stripeKey ? new Stripe(stripeKey) : null;
 
 const app = express();
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: "2mb" }));
+
+function tokenFrom(req) {
+  const header = req.headers.authorization || "";
+  if (header.startsWith("Bearer ")) return header.slice(7);
+  return req.headers["x-meridian-token"];
+}
 
 app.get("/api/health", (_req, res) => {
   res.json({
     ok: true,
     stripe: Boolean(stripe),
     mode: stripe ? "stripe" : "demo",
+    company: "Meridian",
+    ownerOnly: true,
+    ownerEmail: OWNER_EMAIL,
   });
 });
 
-app.get("/api/waitlist", (_req, res) => {
-  const rows = db.prepare("SELECT * FROM waitlist ORDER BY created_at DESC").all();
-  res.json(rows);
+app.get("/api/owner/bootstrap", (_req, res) => {
+  res.json({
+    company: "Meridian",
+    ownerName: OWNER_NAME,
+    ownerEmail: OWNER_EMAIL,
+    hint: "Private company OS — owner login required for Studio.",
+  });
+});
+
+app.post("/api/owner/login", (req, res) => {
+  const result = loginOwner(req.body?.email, req.body?.password);
+  if (result.error) {
+    res.status(401).json({ error: result.error });
+    return;
+  }
+  res.json(result);
+});
+
+app.post("/api/owner/logout", (req, res) => {
+  logoutOwner(tokenFrom(req));
+  res.json({ ok: true });
+});
+
+app.get("/api/owner/me", (req, res) => {
+  const user = getSessionUser(tokenFrom(req));
+  if (!user) {
+    res.status(401).json({ error: "Not signed in" });
+    return;
+  }
+  res.json({ user });
 });
 
 app.post("/api/waitlist", (req, res) => {
@@ -67,152 +121,131 @@ app.post("/api/contact", (req, res) => {
   res.status(201).json({ id, name, email, topic, message, createdAt });
 });
 
-app.post("/api/checkout", async (req, res) => {
-  const name = String(req.body?.name || "").trim();
-  const email = String(req.body?.email || "").trim().toLowerCase();
-  const plan = String(req.body?.plan || "Meridian Core").trim();
-  if (!name || !email.includes("@")) {
-    res.status(400).json({ error: "Name and valid email required." });
-    return;
-  }
-
-  const orderId = crypto.randomUUID();
-  const createdAt = new Date().toISOString();
-  const amountCents = 199500;
-
-  if (stripe) {
-    try {
-      const session = await stripe.checkout.sessions.create({
-        mode: "payment",
-        customer_email: email,
-        line_items: [
-          {
-            quantity: 1,
-            price_data: {
-              currency: "usd",
-              unit_amount: amountCents,
-              product_data: {
-                name: plan,
-                description: "Digital product operating system enrollment",
-              },
-            },
-          },
-        ],
-        metadata: { orderId, name, plan },
-        success_url: `${appUrl}/checkout/success?order=${orderId}&session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${appUrl}/checkout?canceled=1`,
-      });
-      db.prepare(
-        `INSERT INTO orders (id, name, email, plan, amount_cents, status, provider, provider_ref, created_at)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-      ).run(orderId, name, email, plan, amountCents, "pending", "stripe", session.id, createdAt);
-      res.json({ mode: "stripe", url: session.url, orderId });
-      return;
-    } catch (error) {
-      res.status(500).json({
-        error: error instanceof Error ? error.message : "Stripe checkout failed",
-      });
-      return;
-    }
-  }
-
-  db.prepare(
-    `INSERT INTO orders (id, name, email, plan, amount_cents, status, provider, provider_ref, created_at)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-  ).run(orderId, name, email, plan, amountCents, "paid", "demo", null, createdAt);
-
-  db.prepare(
-    `INSERT INTO members (id, name, email, plan, created_at)
-     VALUES (?, ?, ?, ?, ?)
-     ON CONFLICT(email) DO UPDATE SET name=excluded.name, plan=excluded.plan`,
-  ).run(crypto.randomUUID(), name, email, plan, createdAt);
-
-  res.json({
-    mode: "demo",
-    orderId,
-    url: `/checkout/success?order=${orderId}&demo=1`,
+app.post("/api/checkout", (_req, res) => {
+  res.status(403).json({
+    error: "Meridian is a private owner-operated company. Public enrollment is closed.",
+    ownerEmail: OWNER_EMAIL,
   });
 });
 
-app.get("/api/orders/:id", (req, res) => {
-  const order = db.prepare("SELECT * FROM orders WHERE id = ?").get(req.params.id);
-  if (!order) {
-    res.status(404).json({ error: "Order not found" });
-    return;
-  }
-  res.json(order);
+app.get("/api/products", requireOwner, (_req, res) => {
+  const rows = db.prepare("SELECT id, title, niche, status, stage, created_at, updated_at FROM products ORDER BY updated_at DESC").all();
+  res.json(rows);
 });
 
-app.post("/api/orders/:id/confirm", async (req, res) => {
-  const order = db.prepare("SELECT * FROM orders WHERE id = ?").get(req.params.id);
+app.get("/api/products/:id", requireOwner, (req, res) => {
+  const row = db.prepare("SELECT * FROM products WHERE id = ?").get(req.params.id);
+  if (!row) {
+    res.status(404).json({ error: "Product not found" });
+    return;
+  }
+  res.json({ ...row, payload: JSON.parse(row.payload) });
+});
 
-  if (!order) {
-    res.status(404).json({ error: "Order not found" });
+app.post("/api/forge/run", requireOwner, (req, res) => {
+  const topic = String(req.body?.topic || "").trim();
+  const audience = String(req.body?.audience || "").trim();
+  const productType = String(req.body?.productType || "Template pack").trim();
+  if (!topic) {
+    res.status(400).json({ error: "Topic is required" });
     return;
   }
 
-  if (order.status === "paid") {
-    res.json({ ok: true, order });
-    return;
-  }
-
-  if (order.provider === "stripe" && stripe && order.provider_ref) {
-    const session = await stripe.checkout.sessions.retrieve(order.provider_ref);
-    if (session.payment_status !== "paid") {
-      res.status(402).json({ error: "Payment not completed yet" });
-      return;
-    }
-  }
-
-  db.prepare("UPDATE orders SET status = ? WHERE id = ?").run("paid", order.id);
+  const pack = runFullForge({ topic, audience, productType });
+  const id = crypto.randomUUID();
+  const now = new Date().toISOString();
   db.prepare(
-    `INSERT INTO members (id, name, email, plan, created_at)
-     VALUES (?, ?, ?, ?, ?)
-     ON CONFLICT(email) DO UPDATE SET name=excluded.name, plan=excluded.plan`,
-  ).run(crypto.randomUUID(), order.name, order.email, order.plan, new Date().toISOString());
+    `INSERT INTO products (id, title, niche, status, stage, payload, created_at, updated_at)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+  ).run(
+    id,
+    pack.product.title,
+    pack.research.niche,
+    "Draft",
+    "launch",
+    JSON.stringify(pack),
+    now,
+    now,
+  );
 
-  const updated = db.prepare("SELECT * FROM orders WHERE id = ?").get(order.id);
-  res.json({ ok: true, order: updated });
+  res.status(201).json({ id, ...pack });
 });
 
-app.post("/api/login", (req, res) => {
-  const email = String(req.body?.email || "").trim().toLowerCase();
-  const name = String(req.body?.name || "").trim();
-  if (!email.includes("@")) {
-    res.status(400).json({ error: "Valid email required" });
+app.post("/api/forge/step/:step", requireOwner, (req, res) => {
+  const step = req.params.step;
+  const body = req.body || {};
+
+  if (step === "research") {
+    res.json({ research: researchNiche(body) });
     return;
   }
-  const member = db.prepare("SELECT * FROM members WHERE email = ?").get(email);
-
-  if (member) {
-    res.json({ name: member.name, email: member.email, plan: member.plan, member: true });
+  if (step === "product") {
+    const research = body.research || researchNiche(body);
+    res.json({ research, product: buildProduct({ research, productType: body.productType }) });
+    return;
+  }
+  if (step === "sales") {
+    const research = body.research || researchNiche(body);
+    const product = body.product || buildProduct({ research, productType: body.productType });
+    res.json({ research, product, sales: writeSalesPage({ research, product }) });
+    return;
+  }
+  if (step === "distribution") {
+    const research = body.research || researchNiche(body);
+    const product = body.product || buildProduct({ research, productType: body.productType });
+    const sales = body.sales || writeSalesPage({ research, product });
+    const distribution = buildDistribution({ research, product });
+    res.json({ research, product, sales, distribution });
+    return;
+  }
+  if (step === "launch") {
+    const research = body.research || researchNiche(body);
+    const product = body.product || buildProduct({ research, productType: body.productType });
+    const sales = body.sales || writeSalesPage({ research, product });
+    const distribution = body.distribution || buildDistribution({ research, product });
+    const launch = buildLaunchPack({ research, product, sales, distribution });
+    res.json({ research, product, sales, distribution, launch });
     return;
   }
 
-  res.json({
-    name: name || "Member",
-    email,
-    plan: "Guest preview",
-    member: false,
-  });
+  res.status(400).json({ error: "Unknown step" });
 });
 
-app.get("/api/admin/summary", (_req, res) => {
+app.patch("/api/products/:id/status", requireOwner, (req, res) => {
+  const status = String(req.body?.status || "Draft");
+  const updatedAt = new Date().toISOString();
+  const result = db
+    .prepare("UPDATE products SET status = ?, updated_at = ? WHERE id = ?")
+    .run(status, updatedAt, req.params.id);
+  if (!result.changes) {
+    res.status(404).json({ error: "Product not found" });
+    return;
+  }
+  res.json({ ok: true, status, updatedAt });
+});
+
+app.get("/api/admin/summary", requireOwner, (_req, res) => {
   const waitlist = db.prepare("SELECT COUNT(*) AS count FROM waitlist").get();
   const contacts = db.prepare("SELECT COUNT(*) AS count FROM contacts").get();
   const orders = db.prepare("SELECT COUNT(*) AS count FROM orders").get();
   const members = db.prepare("SELECT COUNT(*) AS count FROM members").get();
+  const products = db.prepare("SELECT COUNT(*) AS count FROM products").get();
   const recentWaitlist = db.prepare("SELECT * FROM waitlist ORDER BY created_at DESC LIMIT 10").all();
   const recentOrders = db.prepare("SELECT * FROM orders ORDER BY created_at DESC LIMIT 10").all();
+  const recentProducts = db
+    .prepare("SELECT id, title, niche, status, stage, updated_at FROM products ORDER BY updated_at DESC LIMIT 10")
+    .all();
   res.json({
     counts: {
       waitlist: waitlist.count,
       contacts: contacts.count,
       orders: orders.count,
       members: members.count,
+      products: products.count,
     },
     recentWaitlist,
     recentOrders,
+    recentProducts,
   });
 });
 
@@ -224,5 +257,6 @@ if (fs.existsSync(dist)) {
 }
 
 app.listen(port, "0.0.0.0", () => {
-  console.log(`Meridian API + site on ${appUrl} (stripe=${Boolean(stripe)})`);
+  console.log(`Meridian private company OS on ${appUrl}`);
+  console.log(`Owner: ${ownerInfo.email}`);
 });
