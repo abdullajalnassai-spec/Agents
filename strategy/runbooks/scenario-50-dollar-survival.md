@@ -8,6 +8,10 @@
 
 You have ~$50, real deadlines, and no room for error. You need money **from every legal direction at once** — free help you're owed, money you can stop losing, things you can sell, work you can do today, bounties that pay for time, and remote services built in hours. Trading is a tiny, optional, gated lane at the very end — never the plan.
 
+## No-Install Option
+
+Don't want to install anything? Use the [one-paste prompt](./scenario-50-dollar-survival-one-paste.md) — the whole team runs inside a single chat in ChatGPT, Claude, Gemini, Claude Code, or Cursor.
+
 ## Safety Line (read first)
 
 If your life or safety is at risk, or you have nowhere to sleep tonight, contact your country's emergency number and a crisis line now (US: 911 / 988 / 211). The **Emergency Resources Navigator** runs this lane in parallel with the money plan — you don't have to choose.
