@@ -1,8 +1,8 @@
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
-// Official GitHub Pages URL: https://abdullajalnassai-spec.github.io/Agents/
-const base = process.env.VITE_BASE || "/Agents/";
+// Relative base so the HQ works on GitHub Pages, tunnels, and mirrors without Render.
+const base = process.env.VITE_BASE || "./";
 
 export default defineConfig({
   base,

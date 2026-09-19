@@ -11,16 +11,14 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
-  group: pages
+  group: emonphenom-deploy
   cancel-in-progress: true
 
 jobs:
-  build-and-verify:
+  build-and-deploy:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -32,26 +30,24 @@ jobs:
           node-version: 22
           cache: npm
           cache-dependency-path: website/package-lock.json
-      - run: npm ci
-      - name: Self-check forge engine
+      - run: npm ci --no-audit --no-fund
+      - name: Self-check forge
         run: node scripts/selfcheck.mjs
-      - name: Build
+      - name: Build static HQ
         run: npm run build
         env:
-          VITE_BASE: /Agents/
-      - name: Prepare Pages artifact
+          VITE_BASE: ./
+      - name: Prepare publish folder
         run: |
-          cp dist/index.html dist/404.html
-      - uses: actions/upload-pages-artifact@v3
+          rm -rf publish && mkdir -p publish
+          cp -r dist/* publish/
+          cp dist/index.html publish/404.html
+      - name: Deploy to gh-pages (self-updating)
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: website/dist
-
-  deploy:
-    needs: build-and-verify
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: website/publish
+          publish_branch: gh-pages
+          force_orphan: true
+          user_name: Emonphenom Bot
+          user_email: abdulla.j.alnassai@gmail.com
