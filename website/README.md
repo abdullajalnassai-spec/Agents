@@ -1,20 +1,12 @@
-# Meridian — company website + operating API
+# Meridian — private AI digital product company (Abdulla Alnassai)
 
-Original digital-product company site (inspired by monetise.com-style funnels).  
-Includes checkout, waitlist, contact, member hub, and an ops admin — backed by SQLite.
+Owner-only company OS that runs the faceless digital-product procedure:
 
-## Quick start (full stack)
+**Develop → Distribute → Deliver → Scale**
 
-```bash
-cd website
-npm install
-npm run dev
-```
+## Owner access
 
-- Site: http://127.0.0.1:5173  
-- API: http://127.0.0.1:8787  
-
-## Production (one process)
+Only `abdulla.j.alnassai@gmail.com` can sign in.
 
 ```bash
 cd website
@@ -23,49 +15,48 @@ npm run build
 npm start
 ```
 
-Opens on http://127.0.0.1:8787 with the built site + API + SQLite database in `data/`.
+Open `/owner`, sign in, then use **Studio → Forge**.
 
-## Stripe payments (optional)
+Set a permanent password with:
 
-1. Copy `.env.example` to `.env`
-2. Add your Stripe **test** secret key:
-   ```bash
-   STRIPE_SECRET_KEY=sk_test_...
-   APP_URL=https://your-domain.com
-   ```
-3. Restart the server
+```bash
+OWNER_EMAIL=abdulla.j.alnassai@gmail.com
+OWNER_PASSWORD='your-strong-password'
+OWNER_NAME='Abdulla Alnassai'
+```
 
-Without Stripe keys, checkout runs in **demo mode** (instant enrollment, no card).
+On first boot without `OWNER_PASSWORD`, a one-time password is printed in the server logs and saved locally in `data/owner-credentials.json` (gitignored).
 
-## What operates out of the box
+## Product forge procedure
 
-| Feature | Route |
-|--------|--------|
-| Marketing site | `/` |
-| Waitlist (saved to DB) | `/waitlist` |
-| Paid enrollment | `/checkout` |
-| Member hub | `/dashboard` |
-| Company ops admin | `/admin` |
-| Contact inbox (DB) | `/contact` |
+1. Enter niche / topic + audience + product type
+2. Meridian generates:
+   - Niche research + opportunity score
+   - Full product deliverable pack
+   - Sales page + emails
+   - Partner distribution leads + weekly plan
+   - Launch checklist + export markdown
+3. Save in pipeline → mark **Live** when storefront is ready
+
+## Notion HQ
+
+Private Notion drafts are created for company HQ + forge skill (see agent summary links).
+
+## API highlights
+
+- `POST /api/owner/login`
+- `POST /api/forge/run` (owner token required)
+- `GET /api/products` (owner token required)
+- `GET /api/admin/summary` (owner token required)
+- Public checkout is **closed**
 
 ## Deploy
 
-### Docker
-
 ```bash
-cd website
 docker build -t meridian .
-docker run -p 8787:8787 -e APP_URL=https://your-domain.com meridian
+docker run -p 8787:8787 \
+  -e OWNER_EMAIL=abdulla.j.alnassai@gmail.com \
+  -e OWNER_PASSWORD='...' \
+  -e APP_URL=https://your-domain.com \
+  meridian
 ```
-
-### Railway / Render / Fly
-
-- Root directory: `website`
-- Build: `npm install && npm run build`
-- Start: `npm start`
-- Set `PORT` (platform usually provides it) and `APP_URL`
-- Optional: `STRIPE_SECRET_KEY`
-
-### GitHub Pages (marketing only)
-
-Static frontend can be published from `website/dist`. Forms need the API host — use the Docker/Railway deploy for full operations.
