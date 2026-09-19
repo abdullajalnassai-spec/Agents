@@ -443,6 +443,8 @@ Accounting, financial analysis, tax strategy, and investment research specialist
 | 🏛️ [Tax Strategist](finance/finance-tax-strategist.md) | Tax optimization, multi-jurisdictional compliance, transfer pricing | Entity structuring, ETR analysis, audit defense, strategic tax planning |
 | 🧭 [Survival Capital Allocator](finance/finance-survival-capital-allocator.md) | Micro-bankroll triage, 72h runway, income-tools vs speculative sleeve | $20–$200 survival planning — cashflow first, speculation never-first |
 | 🛡️ [Micro-Trading Risk Officer](finance/finance-micro-trading-risk-officer.md) | Fee math, risk of ruin, Go/No-Go for tiny-account scalping | Gate trading when capital is distressed; hard stops or paper-only |
+| 📉 [Micro-Account Scalper](finance/finance-micro-account-scalper.md) | Fee-aware venue screen, one-setup playbook, 1% risk, demo-to-live gate, prop-eval route | Trading a $50–$500 account like a desk — track record first, funded size second |
+| 📤 [Trade Placement Operator](finance/finance-trade-placement-operator.md) | Runs the paper `trade-desk` CLI — venue, size, place ≤3 tickets, journal | Complete micro-account sessions without live broker routing |
 | 🩹 [Cash Bleed Stopper](finance/finance-cash-bleed-stopper.md) | Cancel auto-charges, recover refunds/deposits, defer bills, block fees | Stop money leaving a broke account on Day 1 of a cash emergency |
 
 ### 🎮 Game Development Division
