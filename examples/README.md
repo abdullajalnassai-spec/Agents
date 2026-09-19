@@ -10,6 +10,12 @@ These examples answer the question: *"What does it actually look like when the f
 
 ## Contents
 
+### [workflow-trade-placement.md](./workflow-trade-placement.md)
+
+**What:** End-to-end paper trade placement for a $100 scalping sleeve — Risk Officer gate → Scalper protocol → Trade Placement Operator runs `trade-desk/run.py` and journals up to 3 tickets.
+
+**Also see:** [trade-desk/README.md](../trade-desk/README.md) (runnable CLI; paper only) · [trade-desk-session-sample.md](./trade-desk-session-sample.md) (sample session report).
+
 ### [workflow-50-dollar-survival.md](./workflow-50-dollar-survival.md)
 
 **What:** A 72-hour, 12-agent strike team for surviving and earning with a ~$50 bankroll across every legal channel at once.
